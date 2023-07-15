@@ -1,8 +1,12 @@
 package controller;
 
-import model.CurrencyConvertor;
+import java.math.BigDecimal;
+
+import model.CurrencyConverter;
+import model.TemperatureConverter;
 import view.gui.CurrencyWindow;
 import view.gui.PrincipalWindow;
+import view.gui.TemperatureWindow;
 
 public class Relations {
 	
@@ -13,17 +17,27 @@ public class Relations {
 		 */
 		PrincipalWindow principalWindow = new PrincipalWindow();
 		CurrencyWindow currencyWindow = new CurrencyWindow();
-		
-		CurrencyConvertor currencyConvertor = new CurrencyConvertor();
-		
+		TemperatureWindow temperatureWindow = new TemperatureWindow();
+			
+		CurrencyConverter currencyConverter = new CurrencyConverter();
+		TemperatureConverter temperatureConverter = new TemperatureConverter();
 		Controller controller = new Controller();
+		
+		
+		
+		
 		
 		/**
 		 * Creating relations controller-views
 		 */
 		principalWindow.setController(controller);
 		currencyWindow.setController(controller);
-		currencyConvertor.setController(controller);
+		
+		temperatureWindow.setController(controller);
+		
+		currencyConverter.setController(controller);
+		temperatureConverter.setController(controller);
+		
 		
 		/**
 		 * Creating relations views-controller
@@ -31,7 +45,16 @@ public class Relations {
 		
 		controller.setPrincipalWindow(principalWindow);
 		controller.setCurrencyWindow(currencyWindow);
-		controller.setCurrencyConvertor(currencyConvertor);
+		controller.setTemperatureWindow(temperatureWindow);
+		
+		controller.setCurrencyConverter(currencyConverter);
+		controller.setTemperatureConverter(temperatureConverter);
+		
+		/**
+		 * Creating relations principalwindow-converters windows
+		 */
+		controller.setCurrencyWindowToPrincipal(currencyWindow);
+		controller.setTemperatureWindowToPrincipal(temperatureWindow);
 		
 		/**
 		 * showing principal window

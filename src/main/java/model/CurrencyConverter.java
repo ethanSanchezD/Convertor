@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import controller.Controller;
 import okhttp3.Response;
 
-public class CurrencyConvertor {
+public class CurrencyConverter {
 	
 	private Controller controller;
 

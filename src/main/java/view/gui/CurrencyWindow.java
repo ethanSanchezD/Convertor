@@ -2,6 +2,8 @@ package view.gui;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.CardLayout;
@@ -9,6 +11,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 
@@ -18,145 +21,152 @@ import java.awt.FlowLayout;
 import javax.swing.JToggleButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class CurrencyWindow extends JPanel implements ActionListener {
-	private final JPanel contentCurrencyPanel = new JPanel();
-	private Controller controller;
-	private JTextField textFieldCuantityInput;
-	private String[ ] currencyoptionStrings = {" ","MXN","USD","EUR","GBP","JPY","KRW"};
+public class CurrencyWindow extends DefaultConverterWindow implements ActionListener{;
+	
+	String[] currencyOptionsKeys = {"", "Mexican Peso","US Dollar", "Euro","British Pound", "Japanese Yen", "South Korean Won"};
+	private HashMap<String,String> hashMapOptions;
 	private JPanel currencyAcronymPanel;
-	private JLabel lblNewLabel;
-	private JPanel currencyMenuPanel;
-	private JLabel lblCuantity;
-	private JLabel lblFrom;
-	private JComboBox<String> comboBoxFrom;
-	private JLabel lblTo;
-	private JComboBox<String> comboBoxTo;
-	private JButton btnConvert;
-	private JLabel lblCuantityDescription;
-	private JLabel lblCuantityResult;
-	private JLabel lblConvertionDescription;
+	private JLabel lblAcronymTitle;
 	
 	/**
 	 * Create the panel.
 	 */
 	public CurrencyWindow() {
-		buildComponents();
-
-	}
-
-	private void buildComponents() {
-		controller = new Controller();
+		super();
+		principalContentPanel.setForeground(new Color(255, 255, 254));
+		optionStrings = new String[] {" ","MXN","USD","EUR","GBP","JPY","KRW"};
+		fillHashMap();
 		
-		setLayout(null);
-		contentCurrencyPanel.setBackground(new Color(255, 255, 255));
-		add(contentCurrencyPanel);
-		contentCurrencyPanel.setLayout(null);
-		contentCurrencyPanel.setBounds(0,0,816,401);
+		contentConverterPanel.setBackground(new Color(255, 255, 255));
+		contentConverterPanel.setBounds(0,0,816,401);
 		
 		currencyAcronymPanel = new JPanel();
-		currencyAcronymPanel.setBackground(new Color(255, 128, 0));
+		currencyAcronymPanel.setBackground(new Color(122, 134, 188));
 		currencyAcronymPanel.setForeground(new Color(255, 255, 255));
 		currencyAcronymPanel.setBounds(0, 0, 223, 401);
-		contentCurrencyPanel.add(currencyAcronymPanel);
+		contentConverterPanel.add(currencyAcronymPanel);
 		currencyAcronymPanel.setLayout(null);
 		
-		lblNewLabel = new JLabel("Acronyms");
-		lblNewLabel.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(49, 83, 131, 36);
-		currencyAcronymPanel.add(lblNewLabel);
+		lblAcronymTitle = new JLabel("Acronyms");
+		lblAcronymTitle.setForeground(new Color(35, 41, 70));
+		lblAcronymTitle.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
+		lblAcronymTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAcronymTitle.setBounds(43, 46, 131, 36);
+		currencyAcronymPanel.add(lblAcronymTitle);
 		
-		currencyMenuPanel = new JPanel();
-		currencyMenuPanel.setBounds(223, 0, 593, 401);
-		contentCurrencyPanel.add(currencyMenuPanel);
-		currencyMenuPanel.setLayout(new BorderLayout(0, 0));
+		JTextArea textAreaAcronym = new JTextArea();
+		textAreaAcronym.setColumns(1);
+		textAreaAcronym.setForeground(new Color(255, 255, 255));
+		textAreaAcronym.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		textAreaAcronym.setBackground(new Color(35, 41, 70));
+		textAreaAcronym.setBounds(35, 90, 154, 239);
+		currencyAcronymPanel.add(textAreaAcronym);
+		textAreaAcronym.setText(printHashMapOptions());
 		
-		JLabel lblNewLabel_1 = new JLabel("   ");
-		currencyMenuPanel.add(lblNewLabel_1, BorderLayout.WEST);
+		principalMenuPanel.setBounds(223, 0, 593, 401);
 		
-		JLabel lblNewLabel_2 = new JLabel("   ");
-		currencyMenuPanel.add(lblNewLabel_2, BorderLayout.EAST);
+		principalContentPanel.setBackground(new Color(35, 41, 70));
 		
-		JPanel currencyContentPanel = new JPanel();
-		currencyContentPanel.setBackground(new Color(152, 186, 224));
-		currencyMenuPanel.add(currencyContentPanel, BorderLayout.CENTER);
-		currencyContentPanel.setLayout(null);
+		lblConverterTitle.setText("Currency Convertor");
+		lblConverterTitle.setForeground(new Color(255, 255, 254));
 		
-		JLabel lblNewLabel_5 = new JLabel("Currency Convertor");
-		lblNewLabel_5.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
-		lblNewLabel_5.setBounds(182, 46, 236, 36);
-		currencyContentPanel.add(lblNewLabel_5);
 		
-		textFieldCuantityInput = new JTextField();
 		textFieldCuantityInput.setBounds(93, 141, 129, 20);
-		currencyContentPanel.add(textFieldCuantityInput);
-		textFieldCuantityInput.setColumns(10);
 		
-		lblCuantity = new JLabel("Cuantity:");
-		lblCuantity.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblCuantity.setForeground(new Color(255, 255, 254));
 		lblCuantity.setBounds(93, 110, 83, 20);
-		currencyContentPanel.add(lblCuantity);
 		
-		lblFrom = new JLabel("From:");
-		lblFrom.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblFrom.setForeground(new Color(255, 255, 254));
 		lblFrom.setBounds(93, 172, 83, 20);
-		currencyContentPanel.add(lblFrom);
 		
-		comboBoxFrom = new JComboBox<>(currencyoptionStrings);
-		comboBoxFrom.setFont(new Font("Roboto Condensed", Font.PLAIN, 12));
+		DefaultComboBoxModel<String> newModelFrom = new DefaultComboBoxModel<>(optionStrings);
+		comboBoxFrom.setModel(newModelFrom);
 		comboBoxFrom.setBounds(93, 203, 129, 22);
-		currencyContentPanel.add(comboBoxFrom);
 		
-		lblTo = new JLabel("To:");
-		lblTo.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
 		lblTo.setBounds(256, 172, 83, 20);
-		currencyContentPanel.add(lblTo);
 		
-		comboBoxTo = new JComboBox<>(currencyoptionStrings);
-		comboBoxTo.setFont(new Font("Roboto Condensed", Font.PLAIN, 12));
+		DefaultComboBoxModel<String> newModelTo = new DefaultComboBoxModel<>(optionStrings);
+		comboBoxTo.setModel(newModelTo);
 		comboBoxTo.setBounds(256, 203, 129, 22);
-		currencyContentPanel.add(comboBoxTo);
-		
-		btnConvert = new JButton("Convert");
-		btnConvert.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+	
+		btnConvert.setForeground(new Color(35, 41, 70));
+		btnConvert.setBackground(new Color(255, 255, 254));
 		btnConvert.setBounds(414, 322, 89, 23);
-		currencyContentPanel.add(btnConvert);
 		btnConvert.addActionListener(this);
 		
-		lblCuantityDescription = new JLabel("New label");
-		lblCuantityDescription.setBounds(93, 252, 292, 19);
-		currencyContentPanel.add(lblCuantityDescription);
+		lblCuantityDescription.setForeground(new Color(192, 192, 192));
+		lblCuantityDescription.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblCuantityDescription.setBounds(93, 266, 292, 19);
 		
-		lblCuantityResult = new JLabel("New label");
+		lblCuantityResult.setForeground(new Color(255, 255, 254));
+		lblCuantityResult.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
 		lblCuantityResult.setBounds(93, 282, 292, 43);
-		currencyContentPanel.add(lblCuantityResult);
-		
-		lblConvertionDescription = new JLabel("New label");
-		lblConvertionDescription.setBounds(93, 336, 292, 14);
-		currencyContentPanel.add(lblConvertionDescription	);
+	
+
+	}
+	
+
+
+	private String printHashMapOptions() {
+		String stringResultString ="";
+		for(int i =1; i < optionStrings.length; i++) {
+			stringResultString = stringResultString + "\n" + "   " + optionStrings[i] + " - " + currencyOptionsKeys[i] + "\n";
+		}
+		return stringResultString;
 	}
 
-	public void setController(Controller controller) {
-		this.controller = controller;
+	private void fillHashMap() {
+		hashMapOptions = new HashMap<String, String>();
+		for(int i =0; i <  optionStrings.length ;i++) {
+			hashMapOptions.put(optionStrings[i],currencyOptionsKeys[i]);
+		}
 		
 	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnConvert) {
 			
-			BigDecimal cuantityInput = new BigDecimal(textFieldCuantityInput.getText());
-			String comboBoxFromString  = comboBoxFrom.getSelectedItem().toString();
-			String comboBoxToString = comboBoxTo.getSelectedItem().toString();			
-			
-			
-			String result = controller.convert(cuantityInput, comboBoxFromString, comboBoxToString).toString();
-			
-			lblCuantityResult.setText(result);
+				if( super.noErrorMessages()) {
+					BigDecimal cuantityInput = new BigDecimal(textFieldCuantityInput.getText());
+					String comboBoxFromString  = comboBoxFrom.getSelectedItem().toString();
+					String comboBoxToString = comboBoxTo.getSelectedItem().toString();					
+					String result = convert(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+					lblCuantityDescription.setText(cuantityInput.toString() + " " + hashMapOptions.get(comboBoxFromString) + " =");
+					lblCuantityResult.setText(result + " " + hashMapOptions.get(comboBoxToString));	
+					
+				}
+				
+				
+				
+					
+				
 		}
+			
+			
+		
 		
 	}
+
+	@Override
+	protected String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
+		return controller.currencyConvertion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+	}
+
+
+
+	public Controller getController() {
+		return this.controller;
+	}
+
+
+	
 }
