@@ -35,7 +35,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	private JPanel principalPanel;
 	private JPanel northPanel;
 	private JPanel optionsPanel;
-	private JPanel convertorsPanel;
+	private JPanel convertersPanel;
 	private JLabel lblCurrencyOption;
 	private JLabel lblTemperatureOption;
 	private JLabel lblWeigthOption;
@@ -59,10 +59,6 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 
 
 	private void buildComponents() {
-		
-		controller = new Controller();
-		currencyWindow = new CurrencyWindow();
-		temperatureWindow = new TemperatureWindow();
 		
 		setTitle("Principal Window");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,45 +100,45 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		JLabel lblNewLabel_3 = new JLabel("   ");
 		optionsPanel.add(lblNewLabel_3, BorderLayout.EAST);
 		
-		convertorsPanel = new JPanel();
-		convertorsPanel.setForeground(new Color(35, 41, 70));
-		optionsPanel.add(convertorsPanel, BorderLayout.CENTER);
-		convertorsPanel.setLayout(new GridLayout(0, 5, 12, 0));
-		convertorsPanel.setOpaque(false);
+		convertersPanel = new JPanel();
+		convertersPanel.setForeground(new Color(35, 41, 70));
+		optionsPanel.add(convertersPanel, BorderLayout.CENTER);
+		convertersPanel.setLayout(new GridLayout(0, 5, 12, 0));
+		convertersPanel.setOpaque(false);
 		
 		lblHomeOption = new JLabel("Home");
 		lblHomeOption.setForeground(new Color(35, 41, 70));
 		lblHomeOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblHomeOption.setHorizontalAlignment(SwingConstants.CENTER);
-		convertorsPanel.add(lblHomeOption);
+		convertersPanel.add(lblHomeOption);
 		lblHomeOption.addMouseListener(this);
 		
 		lblCurrencyOption = new JLabel("Currency");
 		lblCurrencyOption.setForeground(new Color(35, 41, 70));
 		lblCurrencyOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblCurrencyOption.setHorizontalAlignment(SwingConstants.CENTER);
-		convertorsPanel.add(lblCurrencyOption);
+		convertersPanel.add(lblCurrencyOption);
 		lblCurrencyOption.addMouseListener(this);
 		
 		lblTemperatureOption = new JLabel("Temperature");
 		lblTemperatureOption.setForeground(new Color(35, 41, 70));
 		lblTemperatureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblTemperatureOption.setHorizontalAlignment(SwingConstants.CENTER);
-		convertorsPanel.add(lblTemperatureOption);
+		convertersPanel.add(lblTemperatureOption);
 		lblTemperatureOption.addMouseListener(this);
 		
 		lblWeigthOption = new JLabel("Weight");
 		lblWeigthOption.setForeground(new Color(35, 41, 70));
 		lblWeigthOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblWeigthOption.setHorizontalAlignment(SwingConstants.CENTER);
-		convertorsPanel.add(lblWeigthOption);
+		convertersPanel.add(lblWeigthOption);
 		lblWeigthOption.addMouseListener(this);
 		
 		lblMeasureOption = new JLabel("Measure");
 		lblMeasureOption.setForeground(new Color(35, 41, 70));
 		lblMeasureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblMeasureOption.setHorizontalAlignment(SwingConstants.CENTER);
-		convertorsPanel.add(lblMeasureOption);
+		convertersPanel.add(lblMeasureOption);
 		
 		JPanel panelLogo = new JPanel();
 		northPanel.add(panelLogo, BorderLayout.CENTER);
@@ -192,7 +188,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		//setImageLabel(lblImage_1,"/icons/sukuna-chibi.png");
 		lblImage_1.setIcon(new ImagePanel().paintComponent(lblImage_1,"/icons/sukuna-chibi.png"));
 		
-		lblNewLabel_8 = new JLabel("No option convertor selected");
+		lblNewLabel_8 = new JLabel("No converter option selected");
 		lblNewLabel_8.setForeground(new Color(255, 255, 254));
 		lblNewLabel_8.setBounds(250, 346, 301, 26);
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
@@ -262,5 +258,17 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		centerPanel.add(panel, BorderLayout.CENTER);
 		centerPanel.revalidate();
 		centerPanel.repaint();
+	}
+
+
+	public void setCurrencyWindow(CurrencyWindow currencyWindow) {
+		this.currencyWindow = currencyWindow;
+		
+	}
+
+
+	public void setTemperatureWindow(TemperatureWindow temperatureWindow) {
+		this.temperatureWindow = temperatureWindow;
+		
 	}
 }
