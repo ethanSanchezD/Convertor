@@ -2,17 +2,19 @@ package view.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class ImagePanel{
 	
-	public Icon paintComponent(JLabel label) {
-		Icon image = new ImageIcon(new ImageIcon(getClass().getResource("/icons/sukuna-chibi.png"))
-				.getImage().getScaledInstance(label.getWidth(),label.getHeight(), 0));
-		
-		return image;
-		
-		
-	}
-
+	
+	  public Icon paintComponent(JLabel label, String pathImage) { Icon image = new
+	  ImageIcon(new ImageIcon(getClass().getResource(pathImage))
+	  .getImage().getScaledInstance(label.getWidth(),label.getHeight(),
+	  Image.SCALE_DEFAULT));
+	  
+	  return image;
+	  
+	  
+	 }
 
 }
