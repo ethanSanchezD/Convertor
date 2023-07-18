@@ -38,7 +38,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	private JPanel convertersPanel;
 	private JLabel lblCurrencyOption;
 	private JLabel lblTemperatureOption;
-	private JLabel lblWeigthOption;
+	private JLabel lblWeightOption;
 	private JLabel lblMeasureOption ;
 	private JPanel southPanel;
 	private JPanel centerPanel;
@@ -50,6 +50,9 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	private JLabel lblLogo;
 	private CurrencyWindow currencyWindow;
 	private TemperatureWindow temperatureWindow;
+	private WeightWindow weightWindow;
+	private MeasureWindow measureWindow;
+	
 
 	
 	public PrincipalWindow() {
@@ -127,18 +130,19 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		convertersPanel.add(lblTemperatureOption);
 		lblTemperatureOption.addMouseListener(this);
 		
-		lblWeigthOption = new JLabel("Weight");
-		lblWeigthOption.setForeground(new Color(35, 41, 70));
-		lblWeigthOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
-		lblWeigthOption.setHorizontalAlignment(SwingConstants.CENTER);
-		convertersPanel.add(lblWeigthOption);
-		lblWeigthOption.addMouseListener(this);
+		lblWeightOption = new JLabel("Weight");
+		lblWeightOption.setForeground(new Color(35, 41, 70));
+		lblWeightOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblWeightOption.setHorizontalAlignment(SwingConstants.CENTER);
+		convertersPanel.add(lblWeightOption);
+		lblWeightOption.addMouseListener(this);
 		
 		lblMeasureOption = new JLabel("Measure");
 		lblMeasureOption.setForeground(new Color(35, 41, 70));
 		lblMeasureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblMeasureOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblMeasureOption);
+		lblMeasureOption.addMouseListener(this);
 		
 		JPanel panelLogo = new JPanel();
 		northPanel.add(panelLogo, BorderLayout.CENTER);
@@ -216,6 +220,12 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		}else if(e.getSource() == lblTemperatureOption) {
 			
 			changeCenterPanel(temperatureWindow);
+			
+		}else if(e.getSource() == lblWeightOption) {
+			changeCenterPanel(weightWindow);
+			
+		}else if(e.getSource() == lblMeasureOption) {
+			changeCenterPanel(measureWindow);
 		}
 		
 	}
@@ -269,6 +279,18 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 
 	public void setTemperatureWindow(TemperatureWindow temperatureWindow) {
 		this.temperatureWindow = temperatureWindow;
+		
+	}
+
+
+	public void setWeightWindow(WeightWindow weightWindow) {
+		this.weightWindow = weightWindow;
+		
+	}
+
+
+	public void setMeasureWindow(MeasureWindow measureWindow) {
+		this.measureWindow = measureWindow;
 		
 	}
 }
