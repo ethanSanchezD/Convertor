@@ -1,6 +1,7 @@
 package view.gui;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ import java.awt.BorderLayout;
 import controller.Controller;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
@@ -21,20 +23,17 @@ public abstract class DefaultConverterWindow extends JPanel{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	protected final JPanel contentConverterPanel = new JPanel();
 	protected Controller controller;
 	protected JTextField textFieldCuantityInput;
 	protected String[] optionStrings = {" "};
 	protected JPanel principalMenuPanel;
 	protected JLabel lblCuantity;
-	public Controller getController() {
-		return controller;
-	}
 
+	protected JPanel leftContentPanel;
+	protected JLabel lblLeftContentTitle;
+	protected JTextArea textAreaLeftContent;
 	
-
-
 	protected JLabel lblFrom;
 	protected JComboBox<String> comboBoxFrom;
 	protected JLabel lblTo;
@@ -44,6 +43,7 @@ public abstract class DefaultConverterWindow extends JPanel{
 	protected JLabel lblCuantityResult;
 	protected JPanel principalContentPanel;
 	protected JLabel lblConverterTitle;
+	
 	
 	/**
 	 * Create the panel.
@@ -62,17 +62,38 @@ public abstract class DefaultConverterWindow extends JPanel{
 		contentConverterPanel.setLayout(null);
 		contentConverterPanel.setBounds(0,0,816,401);
 		
+		leftContentPanel = new JPanel();
+		leftContentPanel.setForeground(new Color(255, 255, 255));
+		leftContentPanel.setBounds(0, 0, 223, 401);
+		contentConverterPanel.add(leftContentPanel);
+		leftContentPanel.setLayout(null);
+		
+		lblLeftContentTitle = new JLabel("Title");
+		lblLeftContentTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLeftContentTitle.setBounds(43, 46, 131, 36);
+		leftContentPanel.add(lblLeftContentTitle);
+		lblLeftContentTitle.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
+		
+		textAreaLeftContent = new JTextArea();
+		textAreaLeftContent.setColumns(1);
+		textAreaLeftContent.setForeground(new Color(255, 255, 255));
+		textAreaLeftContent.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		textAreaLeftContent.setBackground(new Color(35, 41, 70));
+		textAreaLeftContent.setBounds(35, 90, 154, 239);
+		leftContentPanel.add(textAreaLeftContent);
+		
+		
 		principalMenuPanel = new JPanel();
-		principalMenuPanel.setBounds(0, 0, 816, 401);
+		principalMenuPanel.setBounds(223, 0, 593, 401);
 		contentConverterPanel.add(principalMenuPanel);
 		principalMenuPanel.setLayout(new BorderLayout(0, 0));
 		
 		principalContentPanel = new JPanel();
-		principalContentPanel.setBackground(new Color(35, 41, 70));
+		principalContentPanel.setBackground(new Color(0, 0, 0));
 		principalMenuPanel.add(principalContentPanel, BorderLayout.CENTER);
 		principalContentPanel.setLayout(null);
 		
-		lblConverterTitle = new JLabel("  ");
+		lblConverterTitle = new JLabel("Title");
 		lblConverterTitle.setForeground(new Color(255, 255, 254));
 		lblConverterTitle.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
 		lblConverterTitle.setBounds(182, 46, 236, 36);
@@ -114,6 +135,7 @@ public abstract class DefaultConverterWindow extends JPanel{
 		lblTo.setForeground(new Color(255, 255, 254));
 		lblTo.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
 		lblTo.setBounds(256, 172, 83, 20);
+		
 		principalContentPanel.add(lblTo);
 		
 		comboBoxTo = new JComboBox<>(optionStrings);
@@ -163,6 +185,10 @@ public abstract class DefaultConverterWindow extends JPanel{
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
+	
+	public Controller getController() {
+		return controller;
+	}
 
 	public JTextField getTextFieldCuantityInput() {
 		return textFieldCuantityInput;
@@ -187,5 +213,7 @@ public abstract class DefaultConverterWindow extends JPanel{
 	public void setLblCuantity(JLabel lblCuantity) {
 		this.lblCuantity = lblCuantity;
 	}
+	
+	
 
 }
