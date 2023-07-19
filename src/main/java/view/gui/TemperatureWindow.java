@@ -37,45 +37,50 @@ public class TemperatureWindow extends DefaultConverterWindow implements ActionL
 	public TemperatureWindow() {
 		
 		super();
-		optionStrings = new String[] {" ","°C","°F"};
-		contentConverterPanel.setBackground(new Color(255, 255, 255));
-		contentConverterPanel.setBounds(0,0,816,401);
 		
-		principalMenuPanel.setBounds(0, 0, 816, 401);
+		
+		optionStrings = new String[] {" ","°C (Celsius)","°F (Fharenheit)", "K (Kelvins)"};
+
+		lblLeftContentTitle.setText("Formula");
+		
+		textAreaLeftContent.setText("  ");
+		textAreaLeftContent.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+		textAreaLeftContent.setBounds(35, 137, 156, 83);
+		textAreaLeftContent.setBackground(new Color(9, 64, 103));
+		
+		
+		lblLeftContentTitle.setForeground(new Color(9, 64, 103));
+		leftContentPanel.setBackground(new Color(109, 156, 190));
+		lblConverterTitle.setBounds(159, 46, 280, 36);
+		contentConverterPanel.setBackground(new Color(255, 255, 255));
+		
 
 		principalContentPanel.setBackground(new Color(9, 64, 103));
 		
-		lblConverterTitle.setText("Temperature Convertor");
+		lblConverterTitle.setText("Temperature Converter");
 		lblConverterTitle.setForeground(new Color(255, 255, 254));
-		lblConverterTitle.setBounds(278, 49, 292, 36);
 		
 		
 		
-		textFieldCuantityInput.setBounds(189, 144, 129, 20);
 		
 		lblCuantity.setForeground(new Color(255, 255, 254));
-		lblCuantity.setBounds(189, 113, 83, 20);
 		
 		lblFrom.setForeground(new Color(255, 255, 254));
-		lblFrom.setBounds(189, 175, 83, 20);
-		
+	
 		DefaultComboBoxModel<String> newModelFrom = new DefaultComboBoxModel<>(optionStrings);
 		comboBoxFrom.setModel(newModelFrom);
-		comboBoxFrom.setBounds(189, 206, 129, 22);
 		
-		lblTo.setBounds(352, 175, 83, 20);
 		
 		DefaultComboBoxModel<String> newModelTo = new DefaultComboBoxModel<>(optionStrings);
 		comboBoxTo.setModel(newModelTo);
-		comboBoxTo.setBounds(352, 206, 129, 22);
+	
 		
 		btnConvert.setForeground(new Color(9, 64, 103));
-		btnConvert.setBounds(510, 325, 89, 23);
 		btnConvert.addActionListener(this);
 		
-		lblCuantityDescription.setBounds(189, 257, 292, 19);
+	
 		
-		lblCuantityResult.setBounds(189, 273, 292, 43);
+		
 	}
 		
 		
@@ -94,6 +99,42 @@ public class TemperatureWindow extends DefaultConverterWindow implements ActionL
 					String comboBoxFromString  = comboBoxFrom.getSelectedItem().toString();
 					String comboBoxToString = comboBoxTo.getSelectedItem().toString();	
 					String result = convert(cuantityInput, comboBoxFromString, comboBoxToString);
+					
+					//Celsius to Fahrenheit
+					if(comboBoxFromString.equals(getOptionStrings()[1]) && 
+							comboBoxToString.equals(getOptionStrings()[2])) {
+						textAreaLeftContent.setText(writeFormulas("C to F"));
+					
+					//Fahrenheit to Celsius
+					}else if(comboBoxFromString.equals(getOptionStrings()[2]) && 
+							comboBoxToString.equals(getOptionStrings()[1])) {
+						textAreaLeftContent.setText(writeFormulas("F to C"));
+					
+					//Fahrenheit to Kelvin
+					}else if(comboBoxFromString.equals(getOptionStrings()[2]) && 
+							comboBoxToString.equals(getOptionStrings()[3])){
+						textAreaLeftContent.setText(writeFormulas("F to K"));
+					
+					//Kelvin to Fahrenheit
+					}else if(comboBoxFromString.equals(getOptionStrings()[3]) && 
+							comboBoxToString.equals(getOptionStrings()[2])){
+						textAreaLeftContent.setText(writeFormulas("K to F"));
+					
+						
+					//Celsius to Kelvin
+					}else if(comboBoxFromString.equals(getOptionStrings()[1]) && 
+							comboBoxToString.equals(getOptionStrings()[3])) {
+						textAreaLeftContent.setText(writeFormulas("C to K"));
+						
+					//Kelvin to Celsius
+					}else if(comboBoxFromString.equals(getOptionStrings()[3]) && 
+							comboBoxToString.equals(getOptionStrings()[1])) {
+						textAreaLeftContent.setText(writeFormulas("K to C"));
+						
+					}else {
+						textAreaLeftContent.setText(writeFormulas(""));
+					}
+					
 					lblCuantityDescription.setText(cuantityInput.toString() + " " + comboBoxFromString+ " =");
 					lblCuantityResult.setText(result + " " + comboBoxToString);	
 				}
@@ -109,5 +150,46 @@ public class TemperatureWindow extends DefaultConverterWindow implements ActionL
 	@Override
 	protected String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
 		return controller.temperatureyConvertion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+	}
+	
+	private String writeFormulas(String option) {
+		
+		String result = "\n \n";
+		switch (option) {
+		//Celsius to Fahrenheit
+		case "C to F":
+			result =result + "      °F = ((°C/5) * 9) + 32";
+			
+			break;
+			
+		//Fahrenheit to Celsius
+		case "F to C":
+			result = result+ "      °C = ((°F - 32) * 5) / 9";
+			break;
+			
+		//Fahrenheit to Kelvin
+		case "F to K":
+			result = result + "      K = (°F + 459.67) * 5/9";
+			break;
+		//Kelvin to Fahrenheit
+		case "K to F":
+			result = result + "      °F = (K * 9/5) - 459.67";
+			break;
+		//Celsius to Kelvin
+		case "C to K":
+			result = result + "      K = °C + 273.15";
+			break;
+			
+		//Kelvin to Celsius
+		case "K to C":
+			result = result + "      °C = K - 273.15";
+			break;
+	
+		default:
+			result = result + "      No formula to show";
+			break;
+		}
+		
+		return result;
 	}
 }

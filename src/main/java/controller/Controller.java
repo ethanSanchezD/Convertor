@@ -3,10 +3,14 @@ package controller;
 import java.math.BigDecimal;
 
 import model.CurrencyConverter;
+import model.MeasureConverter;
 import model.TemperatureConverter;
+import model.WeightConverter;
 import view.gui.CurrencyWindow;
+import view.gui.MeasureWindow;
 import view.gui.PrincipalWindow;
 import view.gui.TemperatureWindow;
+import view.gui.WeightWindow;
 
 public class Controller {
 	
@@ -15,9 +19,16 @@ public class Controller {
 	private CurrencyConverter currencyConverter;
 	private TemperatureWindow temperatureWindow;
 	private TemperatureConverter temperatureConverter;
+	private WeightWindow weightWindow;
+	private WeightConverter weightConverter;
+	private MeasureWindow measureWindow;
+	private MeasureConverter measureConverter;
 	
 
 	
+	
+
+
 	public void showPrincipalWindow() {
 		principalWindow.setVisible(true);
 	}
@@ -38,11 +49,11 @@ public class Controller {
 	
 
 	public BigDecimal weightConvertion(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return null;
+		return weightConverter.convert(cuantityInput, comboBoxFromString, comboBoxToString);
 	}
 	
-	public BigDecimal MeasureConvertion(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return null;
+	public BigDecimal measureConverter(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
+		return measureConverter.convert(cuantityInput, comboBoxFromString, comboBoxToString);
 	}
 
 	
@@ -56,16 +67,6 @@ public class Controller {
 		
 	}
 	
-//	public void setWeightWindow(WeigthWindow weigthWindow) {
-//		this.weigthWindow = weigthWindow;
-//		
-//	}
-//	
-//	public void setMeasureWindow(MesureWindow measureWindow) {
-//		this.measureWindow = measureWindow;
-//		
-//	}
-
 	public void setCurrencyConverter(CurrencyConverter currencyConvertor) {
 		this.currencyConverter = currencyConvertor;
 		
@@ -75,10 +76,23 @@ public class Controller {
 		principalWindow.setCurrencyWindow(currencyWindow);
 		
 	}
-
+	
 	public void setTemperatureWindowToPrincipal(TemperatureWindow temperatureWindow) {
 		principalWindow.setTemperatureWindow(temperatureWindow);
 	}
+	
+	
+	public void setWeightWindowToPrincipal(WeightWindow weightWindow) {
+		principalWindow.setWeightWindow(weightWindow);
+		
+	}
+
+	
+	public void setMeasureWindowToPrincipal(MeasureWindow measureWindow) {
+		principalWindow.setMeasureWindow(measureWindow);
+		
+	}
+
 
 	
 	public void setTemperatureWindow(TemperatureWindow temperatureWindow) {
@@ -88,6 +102,34 @@ public class Controller {
 
 
 
+
+
+
+
+	public void setWeightWindow(WeightWindow weightWindow) {
+		this.weightWindow = weightWindow;
+		
+	}
+
+
+
+	public void setWeightConverter(WeightConverter weightConverter) {
+		this.weightConverter = weightConverter;		
+	}
+
+
+
+	public void setMeasureWindow(MeasureWindow measureWindow) {
+		this.measureWindow = measureWindow;
+	}
+
+
+
+	public void setMeasureConverter(MeasureConverter measureConverter) {
+		this.measureConverter = measureConverter;
+	}
+
+	
 	public void setTemperatureConverter(TemperatureConverter temperatureConverter) {
 		this.temperatureConverter = temperatureConverter;
 		
@@ -99,4 +141,23 @@ public class Controller {
 		return temperatureWindow;
 	}
 
+	
+	public CurrencyWindow getCurrencyWindow() {
+		return currencyWindow;
+	}
+
+
+
+	public WeightWindow getWeightWindow() {
+		return weightWindow;
+	}
+
+
+
+	public MeasureWindow getMeasureWindow() {
+		return measureWindow;
+	}
+
+
+	
 }
