@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.CardLayout;
 import java.awt.GridLayout;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
@@ -54,8 +55,16 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 		lblLeftContentTitle.setForeground(new Color(35, 41, 70));
 		
 		
+		JTextArea textAreaCurrencyWindowArea = new JTextArea();
+		textAreaCurrencyWindowArea.setColumns(1);
+		textAreaCurrencyWindowArea.setForeground(new Color(255, 255, 255));
+		textAreaCurrencyWindowArea.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		textAreaCurrencyWindowArea.setBackground(new Color(35, 41, 70));
+		textAreaCurrencyWindowArea.setBounds(35, 90, 154, 239);
+		leftContentPanel.remove(textAreaLeftContent);
+		leftContentPanel.add(textAreaCurrencyWindowArea);
 		
-		textAreaLeftContent.setText(printHashMapOptions());
+		textAreaCurrencyWindowArea.setText(printHashMapOptions());
 		
 		
 		
