@@ -16,7 +16,10 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
+import java.util.Map;
+import java.util.function.Function;
 
 import javax.swing.SwingConstants;
 import javax.swing.BorderFactory;
@@ -27,9 +30,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 
 public class PrincipalWindow extends JFrame implements MouseListener{
-
+	
+	private Font font;
 	private JPanel contentPane;
 	private Controller controller;
 	private JPanel principalPanel;
@@ -63,9 +68,10 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 
 	private void buildComponents() {
 		
-		setTitle("Principal Window");
+		setTitle("Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 840, 532);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(35, 41, 70));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -110,36 +116,37 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		convertersPanel.setOpaque(false);
 		
 		lblHomeOption = new JLabel("Home");
-		lblHomeOption.setForeground(new Color(35, 41, 70));
-		lblHomeOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblHomeOption.setForeground(new Color(40, 50, 81));
+		lblHomeOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
 		lblHomeOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblHomeOption);
 		lblHomeOption.addMouseListener(this);
+		setUnderline(lblHomeOption,true);
 		
 		lblCurrencyOption = new JLabel("Currency");
-		lblCurrencyOption.setForeground(new Color(35, 41, 70));
-		lblCurrencyOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblCurrencyOption.setForeground(new Color(40, 50, 81));
+		lblCurrencyOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
 		lblCurrencyOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblCurrencyOption);
 		lblCurrencyOption.addMouseListener(this);
 		
 		lblTemperatureOption = new JLabel("Temperature");
-		lblTemperatureOption.setForeground(new Color(35, 41, 70));
-		lblTemperatureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblTemperatureOption.setForeground(new Color(40, 50, 81));
+		lblTemperatureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
 		lblTemperatureOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblTemperatureOption);
 		lblTemperatureOption.addMouseListener(this);
 		
 		lblWeightOption = new JLabel("Weight");
-		lblWeightOption.setForeground(new Color(35, 41, 70));
-		lblWeightOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblWeightOption.setForeground(new Color(40, 50, 81));
+		lblWeightOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
 		lblWeightOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblWeightOption);
 		lblWeightOption.addMouseListener(this);
 		
 		lblMeasureOption = new JLabel("Measure");
-		lblMeasureOption.setForeground(new Color(35, 41, 70));
-		lblMeasureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblMeasureOption.setForeground(new Color(40, 50, 81));
+		lblMeasureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
 		lblMeasureOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblMeasureOption);
 		lblMeasureOption.addMouseListener(this);
@@ -168,7 +175,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		JLabel lblNewLabel_5 = new JLabel("   ");
 		southPanel.add(lblNewLabel_5, BorderLayout.SOUTH);
 		
-		JLabel lblNewLabel_6 = new JLabel("Made by Ethan Sanchez");
+		JLabel lblNewLabel_6 = new JLabel("Created by Ethan Sanchez");
 		lblNewLabel_6.setForeground(new Color(35, 41, 70));
 		lblNewLabel_6.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
@@ -180,7 +187,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		centerPanel.setLayout(null);
 		
 		contenCenterPanel = new JPanel();
-		contenCenterPanel.setBackground(new Color(35, 41, 70));
+		contenCenterPanel.setBackground(new Color(56, 69, 114));
 		contenCenterPanel.setBounds(0, 0, 816, 401);
 		centerPanel.add(contenCenterPanel);
 		contenCenterPanel.setLayout(null);
@@ -190,7 +197,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		lblImage_1.setHorizontalAlignment(SwingConstants.CENTER);
 		contenCenterPanel.add(lblImage_1);
 		//setImageLabel(lblImage_1,"/icons/sukuna-chibi.png");
-		lblImage_1.setIcon(new ImagePanel().paintComponent(lblImage_1,"/icons/sukuna-chibi.png"));
+		lblImage_1.setIcon(new ImagePanel().paintComponent(lblImage_1,"/icons/megumi-chibi.png"));
 		
 		lblNewLabel_8 = new JLabel("No converter option selected");
 		lblNewLabel_8.setForeground(new Color(255, 255, 254));
@@ -207,29 +214,102 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		
 	}
 
+	private void setUnderline(JLabel labelAsButton,Boolean underlineOnOf) {
+        font = labelAsButton.getFont();
+        Map attribute = font.getAttributes();
+        if(underlineOnOf) {
+        	attribute.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        }else {
+        	attribute.put(TextAttribute.UNDERLINE, -1);
+        }
+        
+        labelAsButton.setFont(font.deriveFont(attribute));
+    }
+	
+	private void setNoUnderlineDeaultfColorJlabelsInArray(JLabel[] array,JLabel label, Color colorInSelection) {
+		
+		for(int i = 0; i < array.length; i++ ) {
+			setUnderline(array[i], false);
+			array[i].setForeground(new Color(40, 50, 81));
+		}
+		
+		setUnderline(label, true);
+		label.setForeground(colorInSelection);
+	}
+	
+	private void setNullInputsInWindowsConverters(DefaultConverterWindow[] windowsArray) {
+		for(int i = 0; i < windowsArray.length; i++) {
+			windowsArray[i].getTextAreaLeftContent().setText("");
+			windowsArray[i].getTextFieldCuantityInput().setText("");
+			windowsArray[i].getComboBoxFrom().setSelectedIndex(0);
+			windowsArray[i].getComboBoxTo().setSelectedIndex(0);
+			windowsArray[i].getLblCuantityDescription().setText("");
+			windowsArray[i].getLblCuantityResult().setText("");
+		}
+		
+	}
+	
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getSource() == lblCurrencyOption) {
-			
-			changeCenterPanel(currencyWindow);
-			
-		}else if(e.getSource() == lblHomeOption) {
+		
+		DefaultConverterWindow[] converterWindowsArray = {currencyWindow,temperatureWindow,weightWindow,measureWindow};
+		
+		JLabel[] labelOptionsArrayJLabels = 
+			{lblHomeOption,lblCurrencyOption,lblTemperatureOption,lblWeightOption,lblMeasureOption};
+		
+		if(e.getSource() == lblHomeOption) {
+			setTitle("Home");
 			changeCenterPanel(contenCenterPanel);
 			
-		}else if(e.getSource() == lblTemperatureOption) {
+			setNoUnderlineDeaultfColorJlabelsInArray(labelOptionsArrayJLabels, lblHomeOption, new Color(40, 50, 81));
 			
+			setNullInputsInWindowsConverters(converterWindowsArray);
+			
+			
+		}else if(e.getSource() == lblCurrencyOption) {
+			setTitle("Currency Converter");
+			changeCenterPanel(currencyWindow);
+			
+			
+			setNoUnderlineDeaultfColorJlabelsInArray(labelOptionsArrayJLabels, lblCurrencyOption,new Color(35, 41, 70));
+			
+			setNullInputsInWindowsConverters(converterWindowsArray);
+			
+			
+			
+			
+		}else if(e.getSource() == lblTemperatureOption) {
+			setTitle("Temperature Converter");
 			changeCenterPanel(temperatureWindow);
 			
+			
+			setNoUnderlineDeaultfColorJlabelsInArray(labelOptionsArrayJLabels, lblTemperatureOption,new Color(9, 64, 103));
+			
+			setNullInputsInWindowsConverters(converterWindowsArray);
+			
 		}else if(e.getSource() == lblWeightOption) {
+			setTitle("Weight Converter");
 			changeCenterPanel(weightWindow);
 			
+			
+			setNoUnderlineDeaultfColorJlabelsInArray(labelOptionsArrayJLabels, lblWeightOption,new Color(56, 28, 104));
+			
+			setNullInputsInWindowsConverters(converterWindowsArray);
+			
 		}else if(e.getSource() == lblMeasureOption) {
+			setTitle("Measure Converter");
 			changeCenterPanel(measureWindow);
+						
+			setNoUnderlineDeaultfColorJlabelsInArray(labelOptionsArrayJLabels, lblMeasureOption,new Color(5, 88, 88));
+			
+			setNullInputsInWindowsConverters(converterWindowsArray);
+			
 		}
 		
 	}
 
+	
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -247,7 +327,18 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == lblHomeOption || e.getSource() == lblCurrencyOption 
+				|| e.getSource() == lblTemperatureOption 
+				|| e.getSource() == lblWeightOption || e.getSource() == lblMeasureOption) {
+			
+			JLabel[] labelOptionsArrayJLabels = 
+				{lblHomeOption,lblCurrencyOption,lblTemperatureOption,lblWeightOption,lblMeasureOption};
+			
+			for(int i = 0;i < labelOptionsArrayJLabels.length;i++) {
+				labelOptionsArrayJLabels[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			
+		}
 		
 	}
 
@@ -293,4 +384,7 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		this.measureWindow = measureWindow;
 		
 	}
+	
+	  
+
 }
