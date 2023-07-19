@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.Color;
 import java.math.BigDecimal;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.BorderLayout;
 import controller.Controller;
 
@@ -164,8 +165,12 @@ public abstract class DefaultConverterWindow extends JPanel{
 	}
 
 	public Boolean noErrorMessages() {
-		if(textFieldCuantityInput.getText().length()<= 0) {
-			JOptionPane.showMessageDialog(null,"Type a number input","Error",JOptionPane.ERROR_MESSAGE);
+		Pattern pattern = Pattern.compile("\\s");
+		Matcher matcher = pattern.matcher(textFieldCuantityInput.getText());
+		
+		
+		if(textFieldCuantityInput.getText().length()<= 0 || matcher.find() || textFieldCuantityInput.getText().matches("[\\p{P}\\p{S}]")) {
+			JOptionPane.showMessageDialog(null,"Type a valid input (no spaces, no punctuation simbols)","Error",JOptionPane.ERROR_MESSAGE);
 			return false;
 			
 			
@@ -180,14 +185,13 @@ public abstract class DefaultConverterWindow extends JPanel{
 	
 
 	protected abstract String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString);
-	
-	
-	public void setController(Controller controller) {
-		this.controller = controller;
-	}
-	
+
 	public Controller getController() {
 		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 
 	public JTextField getTextFieldCuantityInput() {
@@ -206,6 +210,14 @@ public abstract class DefaultConverterWindow extends JPanel{
 		this.optionStrings = optionStrings;
 	}
 
+	public JPanel getPrincipalMenuPanel() {
+		return principalMenuPanel;
+	}
+
+	public void setPrincipalMenuPanel(JPanel principalMenuPanel) {
+		this.principalMenuPanel = principalMenuPanel;
+	}
+
 	public JLabel getLblCuantity() {
 		return lblCuantity;
 	}
@@ -213,6 +225,109 @@ public abstract class DefaultConverterWindow extends JPanel{
 	public void setLblCuantity(JLabel lblCuantity) {
 		this.lblCuantity = lblCuantity;
 	}
+
+	public JPanel getLeftContentPanel() {
+		return leftContentPanel;
+	}
+
+	public void setLeftContentPanel(JPanel leftContentPanel) {
+		this.leftContentPanel = leftContentPanel;
+	}
+
+	public JLabel getLblLeftContentTitle() {
+		return lblLeftContentTitle;
+	}
+
+	public void setLblLeftContentTitle(JLabel lblLeftContentTitle) {
+		this.lblLeftContentTitle = lblLeftContentTitle;
+	}
+
+	public JTextArea getTextAreaLeftContent() {
+		return textAreaLeftContent;
+	}
+
+	public void setTextAreaLeftContent(JTextArea textAreaLeftContent) {
+		this.textAreaLeftContent = textAreaLeftContent;
+	}
+
+	public JLabel getLblFrom() {
+		return lblFrom;
+	}
+
+	public void setLblFrom(JLabel lblFrom) {
+		this.lblFrom = lblFrom;
+	}
+
+	public JComboBox<String> getComboBoxFrom() {
+		return comboBoxFrom;
+	}
+
+	public void setComboBoxFrom(JComboBox<String> comboBoxFrom) {
+		this.comboBoxFrom = comboBoxFrom;
+	}
+
+	public JLabel getLblTo() {
+		return lblTo;
+	}
+
+	public void setLblTo(JLabel lblTo) {
+		this.lblTo = lblTo;
+	}
+
+	public JComboBox<String> getComboBoxTo() {
+		return comboBoxTo;
+	}
+
+	public void setComboBoxTo(JComboBox<String> comboBoxTo) {
+		this.comboBoxTo = comboBoxTo;
+	}
+
+	public JButton getBtnConvert() {
+		return btnConvert;
+	}
+
+	public void setBtnConvert(JButton btnConvert) {
+		this.btnConvert = btnConvert;
+	}
+
+	public JLabel getLblCuantityDescription() {
+		return lblCuantityDescription;
+	}
+
+	public void setLblCuantityDescription(JLabel lblCuantityDescription) {
+		this.lblCuantityDescription = lblCuantityDescription;
+	}
+
+	public JLabel getLblCuantityResult() {
+		return lblCuantityResult;
+	}
+
+	public void setLblCuantityResult(JLabel lblCuantityResult) {
+		this.lblCuantityResult = lblCuantityResult;
+	}
+
+	public JPanel getPrincipalContentPanel() {
+		return principalContentPanel;
+	}
+
+	public void setPrincipalContentPanel(JPanel principalContentPanel) {
+		this.principalContentPanel = principalContentPanel;
+	}
+
+	public JLabel getLblConverterTitle() {
+		return lblConverterTitle;
+	}
+
+	public void setLblConverterTitle(JLabel lblConverterTitle) {
+		this.lblConverterTitle = lblConverterTitle;
+	}
+
+	public JPanel getContentConverterPanel() {
+		return contentConverterPanel;
+	}
+	
+	
+	
 	
 	
 
