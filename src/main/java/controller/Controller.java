@@ -52,8 +52,8 @@ public class Controller {
 		return weightConverter.convert(cuantityInput, comboBoxFromString, comboBoxToString);
 	}
 	
-	public BigDecimal MeasureConvertion(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return null;
+	public BigDecimal measureConverter(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
+		return measureConverter.convert(cuantityInput, comboBoxFromString, comboBoxToString);
 	}
 
 	
