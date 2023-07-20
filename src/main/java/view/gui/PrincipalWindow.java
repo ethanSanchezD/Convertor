@@ -18,6 +18,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -26,12 +28,18 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 
+/**
+ * Class for the principal window, where the application runs
+ * @author Ethan Damian Sanchez
+ * @version 1.0
+ */
 public class PrincipalWindow extends JFrame implements MouseListener{
 	
 	private Font font;
@@ -59,14 +67,19 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	private MeasureWindow measureWindow;
 	
 
-	
+	/**
+	 * Constructor method that calls buildComponents()
+	 */
 	public PrincipalWindow() {
 		buildComponents();
 		
 	}
 
 
-	private void buildComponents() {
+	/**
+	 * It creates all the components for the window 
+	 */
+	private void buildComponents() {	
 		
 		setTitle("Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -209,11 +222,11 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	}
 
 
-	public void setController(Controller controller) {
-		this.controller = controller;
-		
-	}
-
+	/**
+	 * Underlines a JLabel text depending if it is called with a 'true' parameter
+	 * @param labelAsButton The JLabel that is going to be underlined 
+	 * @param underlineOnOf true if wants the JLabel text underlined, false if don't want it underlined
+	 */
 	private void setUnderline(JLabel labelAsButton,Boolean underlineOnOf) {
         font = labelAsButton.getFont();
         Map attribute = font.getAttributes();
@@ -226,6 +239,13 @@ public class PrincipalWindow extends JFrame implements MouseListener{
         labelAsButton.setFont(font.deriveFont(attribute));
     }
 	
+	/**
+	 * This method is used when the user click a converter option, and the label text of that option underlines 
+	 * and is colored with a specific color, the other label text options get no underline and a default color   
+	 * @param array The JLabel array that has all the converters options
+	 * @param label The label that wants to get 
+	 * @param colorInSelection
+	 */
 	private void setNoUnderlineDeaultfColorJlabelsInArray(JLabel[] array,JLabel label, Color colorInSelection) {
 		
 		for(int i = 0; i < array.length; i++ ) {
@@ -237,6 +257,11 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		label.setForeground(colorInSelection);
 	}
 	
+	/**
+	 * This method is called when the user change the window converter, all values that the input options had,
+	 * are restored
+	 * @param windowsArray The array that has all the converters windows
+	 */
 	private void setNullInputsInWindowsConverters(DefaultConverterWindow[] windowsArray) {
 		for(int i = 0; i < windowsArray.length; i++) {
 			windowsArray[i].getTextAreaLeftContent().setText("");
@@ -250,6 +275,9 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	}
 	
 
+	/**
+	 * Actions for mouse click event, used when the user click a converter option
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
@@ -310,7 +338,9 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	}
 
 	
-
+	/**
+	 * Actions when mouse is pressed 
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -318,6 +348,9 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	}
 
 
+	/**
+	 * Actions when the mouse click is released
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -325,6 +358,9 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 	}
 
 
+	/**
+	 * Actions when the mouse enter in a component bounds, it works as a hover event
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if(e.getSource() == lblHomeOption || e.getSource() == lblCurrencyOption 
@@ -342,14 +378,19 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		
 	}
 
-
+	/**
+	 * Actions when the mouse is out of a component bounds
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	
+	/**
+	 * It change the centerPanel when a converter option is selected
+	 * @param panel The panel that is going to be replaced in the centerPanel
+	 */
 	private void changeCenterPanel(JPanel panel) {
 		panel.setSize(816,401);
 		panel.setLocation(0,0);
@@ -361,25 +402,46 @@ public class PrincipalWindow extends JFrame implements MouseListener{
 		centerPanel.repaint();
 	}
 
+	/**
+	 * Setter for controller field 
+	 * @param controller The new controller
+	 */
+	public void setController(Controller controller) {
+		this.controller = controller;
+		
+	}
 
+	/**
+	 * Setter for currency converter view 
+	 * @param currencyWindow The new currencyWindow
+	 */
 	public void setCurrencyWindow(CurrencyWindow currencyWindow) {
 		this.currencyWindow = currencyWindow;
 		
 	}
 
-
+	/**
+	 * Setter for temperature converter view 
+	 * @param temperatureWindow The new temperatureWindow
+	 */
 	public void setTemperatureWindow(TemperatureWindow temperatureWindow) {
 		this.temperatureWindow = temperatureWindow;
 		
 	}
 
-
+	/**
+	 * Setter for weight converter view 
+	 * @param weightWindow The new weightWindow  
+	 */
 	public void setWeightWindow(WeightWindow weightWindow) {
 		this.weightWindow = weightWindow;
 		
 	}
 
-
+	/**
+	 * Setter for measure converter view 
+	 * @param measureWindow The new measureWindow  
+	 */
 	public void setMeasureWindow(MeasureWindow measureWindow) {
 		this.measureWindow = measureWindow;
 		

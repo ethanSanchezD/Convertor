@@ -12,8 +12,14 @@ import view.gui.PrincipalWindow;
 import view.gui.TemperatureWindow;
 import view.gui.WeightWindow;
 
+/**
+ * Class for relations between windows/converters and the controller 
+ */
 public class Relations {
 	
+	/**
+	 * It instance all window/converter and controller classes and creates all the relations 
+	 */
 	public void build() {
 		
 		/**
