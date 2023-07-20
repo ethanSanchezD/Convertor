@@ -29,6 +29,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Class for currency window, it is shown when the user click the 'Currency' menu, in the principal window
+ */
 public class CurrencyWindow extends DefaultConverterWindow implements ActionListener{;
 	
 	String[] currencyOptionsKeys = {"", "Mexican Peso","US Dollar", "Euro","British Pound", "Japanese Yen", "South Korean Won"};
@@ -36,7 +39,7 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 	
 	
 	/**
-	 * Create the panel.
+	 * Constructor that builds all the components in the window 
 	 */
 	public CurrencyWindow() {
 		super();
@@ -110,6 +113,10 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 	
 
 
+	/**
+	 * It returns a string with all the currency acronyms meaning  
+	 * @return The formated string
+	 */
 	private String printHashMapOptions() {
 		String stringResultString ="";
 		for(int i =1; i < optionStrings.length; i++) {
@@ -118,6 +125,10 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 		return stringResultString;
 	}
 
+	/**
+	 * It puts in the hashmap field all the currency options as a key/value Strings
+	 * Example: for 'MXN' key, 'Mexican Peso' value  
+	 */
 	private void fillHashMap() {
 		hashMapOptions = new HashMap<String, String>();
 		for(int i =0; i <  optionStrings.length ;i++) {
@@ -126,7 +137,11 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 		
 	}
 
-
+	/**
+	 * The action performed when btnConvert button is clicked  
+	 * It changes textAreaLeftContent, lblCuantityDescription and lblCuantityResult depending of
+	 * 'From' and 'To' user options
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnConvert) {
@@ -151,14 +166,20 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 		
 		
 	}
-
+	
+	/**
+	 * convert method, where the controller calls the currency conversion method 
+	 */
 	@Override
 	protected String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return controller.currencyConvertion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+		return controller.currencyConversion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
 	}
 
 
-
+	/**
+	 * Getter for controller field
+	 * @return The controller 
+	 */
 	public Controller getController() {
 		return this.controller;
 	}

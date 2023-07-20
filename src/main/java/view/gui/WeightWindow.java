@@ -9,9 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 
+/**
+ * Class for weight window, it is shown when the user click the 'Weight' menu, in the principal window
+ */
 public class WeightWindow extends DefaultConverterWindow implements ActionListener{
 	
-	
+	/**
+	 * Constructor that builds all the window components
+	 */
 	public WeightWindow() {
 		super();
 		
@@ -45,11 +50,19 @@ public class WeightWindow extends DefaultConverterWindow implements ActionListen
 		
 	}
 
+	/**
+	 * convert method, where the controller calls the weight conversion method 
+	 */
 	@Override
 	protected String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return controller.weightConvertion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+		return controller.weightConversion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
 	}
 
+	/**
+	 * The action performed when btnConvert button is clicked  
+	 * It changes textAreaLeftContent, lblCuantityDescription and lblCuantityResult depending of
+	 * 'From' and 'To' user options
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnConvert) {
@@ -102,6 +115,12 @@ public class WeightWindow extends DefaultConverterWindow implements ActionListen
 		
 	}
 
+	/**
+	 * Write the formulas in the textAreaLeftContent depending of 'From' and 'To' user options
+	 * It uses a switch that returns a specific formula 
+	 * @param option The specific formula we want (example: 'm to km') 
+	 * @return The specific formula 
+	 */
 	private String writeFormulas(String option) {
 		String result = "\n \n";
 		switch (option) {

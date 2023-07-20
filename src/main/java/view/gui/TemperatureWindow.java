@@ -28,11 +28,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Class for temperature window, it is shown when the user click the 'Temperature' menu, in the principal window
+ */
 public class TemperatureWindow extends DefaultConverterWindow implements ActionListener{ 
 
 	
 	/**
-	 * Create the panel.
+	 * Constructor that builds all the window components
 	 */
 	public TemperatureWindow() {
 		
@@ -89,7 +92,11 @@ public class TemperatureWindow extends DefaultConverterWindow implements ActionL
 		
 		
 
-	
+	/**
+	 * The action performed when btnConvert button is clicked  
+	 * It changes textAreaLeftContent, lblCuantityDescription and lblCuantityResult depending of
+	 * 'From' and 'To' user options
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnConvert) {
@@ -146,12 +153,21 @@ public class TemperatureWindow extends DefaultConverterWindow implements ActionL
 		}
 		
 	}
-
+	
+	/**
+	 * convert method, where the controller calls the temperature conversion method 
+	 */
 	@Override
 	protected String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return controller.temperatureyConvertion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+		return controller.temperatureyConversion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
 	}
 	
+	/**
+	 * Write the formulas in the textAreaLeftContent depending of 'From' and 'To' user options
+	 * It uses a switch that returns the specific formula 
+	 * @param option The specific formula we want (example: 'm to km') 
+	 * @return The specific formula 
+	 */
 	private String writeFormulas(String option) {
 		
 		String result = "\n \n";

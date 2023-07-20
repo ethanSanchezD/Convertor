@@ -7,15 +7,22 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
 
 import controller.Controller;
 
+/**
+ * Class for temperature conversion logic
+ */
 public class TemperatureConverter {
 	
 	private Controller controller;
 
-	public void setController(Controller controller) {
-		this.controller = controller;
-		
-	}
+	
 
+	/**
+	 * Method that makes all the logic for temperature conversion
+	 * @param quantityInput The quantity that user wants to convert
+	 * @param comboBoxFromString 'From' currency user option,  
+	 * @param comboBoxToString 'To' currency user option
+	 * @return The conversion result
+	 */
 	public BigDecimal convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
 		BigDecimal result = new BigDecimal(0);
 		BigDecimal five = new BigDecimal(5);
@@ -74,6 +81,15 @@ public class TemperatureConverter {
 		}
 		
 		return result.setScale(3, RoundingMode.HALF_UP);
+	}
+	
+	/**
+	 * Setter for controller field
+	 * @param controller The new controller 
+	 */
+	public void setController(Controller controller) {
+		this.controller = controller;
+		
 	}
 
 }

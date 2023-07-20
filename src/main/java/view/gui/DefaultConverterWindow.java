@@ -20,10 +20,11 @@ import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * Father class for all windows, it has all the components that all windows has in commune   
+ */
 public abstract class DefaultConverterWindow extends JPanel{
-	/**
-	 * 
-	 */
+	
 	protected final JPanel contentConverterPanel = new JPanel();
 	protected Controller controller;
 	protected JTextField textFieldCuantityInput;
@@ -47,13 +48,16 @@ public abstract class DefaultConverterWindow extends JPanel{
 	
 	
 	/**
-	 * Create the panel.
+	 * Constructor that calls buildComponents()
 	 */
 	public DefaultConverterWindow() {
 		buildComponents();
 
 	}
 
+	/**
+	 * Method that creates all the components in the window 
+	 */
 	private void buildComponents() {
 		
 		setLayout(null);
@@ -164,16 +168,29 @@ public abstract class DefaultConverterWindow extends JPanel{
 		principalContentPanel.add(lblCuantityResult);
 	}
 
+	/**
+	 * Method that returns true if no error was shown, false in other case
+	 * @return True if no error was shown, false otherwise 
+	 */
 	public Boolean noErrorMessages() {
+		/**
+		 * if there is an space blank in the TextField 
+		 */
 		Pattern pattern = Pattern.compile("\\s");
 		Matcher matcher = pattern.matcher(textFieldCuantityInput.getText());
 		
-		
+		/**
+		 * if there is an space blank, the length of the String input is minor than 0, 
+		 * or if the String input has a punctuation character it shows an error message 
+		 * 
+		 */
 		if(textFieldCuantityInput.getText().length()<= 0 || matcher.find() || textFieldCuantityInput.getText().matches("[\\p{P}\\p{S}]")) {
 			JOptionPane.showMessageDialog(null,"Type a valid input (no spaces, no punctuation simbols)","Error",JOptionPane.ERROR_MESSAGE);
 			return false;
 			
-			
+		/**
+		 * If no 'from' or 'to' option is selected, ir shows an error
+		 */
 		}else if(comboBoxFrom.getSelectedItem().equals(optionStrings[0]) || comboBoxTo.getSelectedItem().equals(optionStrings[0])) {
 			JOptionPane.showMessageDialog(null,"Select a 'From' and 'To' option","Error",JOptionPane.ERROR_MESSAGE);
 			return false;
@@ -183,145 +200,291 @@ public abstract class DefaultConverterWindow extends JPanel{
 	}
 
 	
+	/**
+	 * Abstract method that child classes have to implement
+	 * @param quantityInput The user input 
+	 * @param comboBoxFromString 'From' user input option
+	 * @param comboBoxToString 'To' user input option
+	 * @return The conversion result as a String
+	 */
+	protected abstract String convert(BigDecimal quantityInput, String comboBoxFromString, String comboBoxToString);
 
-	protected abstract String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString);
-
+	/**
+	 * Getter for controller field
+	 * @return The controller
+	 */
 	public Controller getController() {
 		return controller;
 	}
 
+	/**
+	 * Setter for controller field
+	 * @param controller The new controller
+	 */
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
 
+	/**
+	 * Getter for textFieldCuantityInput field
+	 * @return The textFieldCuantityInput
+	 */
 	public JTextField getTextFieldCuantityInput() {
 		return textFieldCuantityInput;
 	}
 
+	/**
+	 * Setter for textFieldCuantityInput field
+	 * @param textFieldCuantityInput The new textFieldCuantityInput
+	 */
 	public void setTextFieldCuantityInput(JTextField textFieldCuantityInput) {
 		this.textFieldCuantityInput = textFieldCuantityInput;
 	}
-
+	
+	/**
+	 * Getter for optionStrings field, that has 'from'/ 'to' options
+	 * @return The optionStrings 
+	 */
 	public String[] getOptionStrings() {
 		return optionStrings;
 	}
-
+	
+	/**
+	 * Setter for optionStrings field
+	 * @param optionStrings The new optionStrings 
+	 */
 	public void setOptionStrings(String[] optionStrings) {
 		this.optionStrings = optionStrings;
 	}
 
+	/**
+	 * Getter for principalMenuPanel field
+	 * @return The principalMenuPanel
+	 */
 	public JPanel getPrincipalMenuPanel() {
 		return principalMenuPanel;
 	}
-
+	
+	/**
+	 * Setter for principalMenuPanel field
+	 * @param principalMenuPanel The new principalMenuPanel
+	 */
 	public void setPrincipalMenuPanel(JPanel principalMenuPanel) {
 		this.principalMenuPanel = principalMenuPanel;
 	}
 
+	/**
+	 * Getter for lblCuantity field
+	 * @return The lblCuantity
+	 */
 	public JLabel getLblCuantity() {
 		return lblCuantity;
 	}
 
+	/**
+	 * Setter for lblCuantity field
+	 * @param lblCuantity The new lblCuantity
+	 */
 	public void setLblCuantity(JLabel lblCuantity) {
 		this.lblCuantity = lblCuantity;
 	}
 
+	/**
+	 * Getter for leftContentPanel field
+	 * @return The leftContentPanel
+	 */
 	public JPanel getLeftContentPanel() {
 		return leftContentPanel;
 	}
 
+	/**
+	 * Setter for leftContentPanel field
+	 * @param leftContentPanel The new leftContentPanel
+	 */
 	public void setLeftContentPanel(JPanel leftContentPanel) {
 		this.leftContentPanel = leftContentPanel;
 	}
 
+	/**
+	 * Getter for lblLeftContentTitle field
+	 * @return The lblLeftContentTitle
+	 */
 	public JLabel getLblLeftContentTitle() {
 		return lblLeftContentTitle;
 	}
 
+	/**
+	 * Setter for lblLeftContentTitle field
+	 * @param lblLeftContentTitle The new lblLeftContentTitle
+	 */
 	public void setLblLeftContentTitle(JLabel lblLeftContentTitle) {
 		this.lblLeftContentTitle = lblLeftContentTitle;
 	}
 
+	/**
+	 * Getter for textAreaLeftContent field
+	 * @return The textAreaLeftContent
+	 */
 	public JTextArea getTextAreaLeftContent() {
 		return textAreaLeftContent;
 	}
 
+	/**
+	 * Setter for textAreaLeftContent field
+	 * @param textAreaLeftContent The new textAreaLeftContent
+	 */
 	public void setTextAreaLeftContent(JTextArea textAreaLeftContent) {
 		this.textAreaLeftContent = textAreaLeftContent;
 	}
 
+	/**
+	 * Getter for lblFrom field 
+	 * @return The lblFrom
+	 */
 	public JLabel getLblFrom() {
 		return lblFrom;
 	}
 
+	/**
+	 * Setter for lblFrom
+	 * @param lblFrom The new lblFrom 
+	 */
 	public void setLblFrom(JLabel lblFrom) {
 		this.lblFrom = lblFrom;
 	}
 
+	/**
+	 * Getter for comboBoxFrom field
+	 * @return The comboBoxFrom
+	 */
 	public JComboBox<String> getComboBoxFrom() {
 		return comboBoxFrom;
 	}
 
+	/**
+	 * Setter for comboBoxFrom field
+	 * @param comboBoxFrom The new comboBoxFrom
+	 */
 	public void setComboBoxFrom(JComboBox<String> comboBoxFrom) {
 		this.comboBoxFrom = comboBoxFrom;
 	}
 
+	/**
+	 * Getter for lblTo field
+	 * @return The lblTo
+	 */
 	public JLabel getLblTo() {
 		return lblTo;
 	}
 
+	/**
+	 * Setter for lblTo field
+	 * @param lblTo The new lblTo
+	 */
 	public void setLblTo(JLabel lblTo) {
 		this.lblTo = lblTo;
 	}
 
+	/**
+	 * Getter for comboBoxTo field
+	 * @return The comboBoxTo
+	 */
 	public JComboBox<String> getComboBoxTo() {
 		return comboBoxTo;
 	}
 
+	/**
+	 * Setter for comboBoxTo field
+	 * @param comboBoxTo The new comboBoxTo
+	 */
 	public void setComboBoxTo(JComboBox<String> comboBoxTo) {
 		this.comboBoxTo = comboBoxTo;
 	}
 
+	/**
+	 * Getter for btnConvert field
+	 * @return The btnConvert
+	 */
 	public JButton getBtnConvert() {
 		return btnConvert;
 	}
 
+	/**
+	 * Setter for btnConvert field
+	 * @param btnConvert
+	 */
 	public void setBtnConvert(JButton btnConvert) {
 		this.btnConvert = btnConvert;
 	}
 
+	/**
+	 * Getter for lblCuantityDescription field
+	 * @return The lblCuantityDescription
+	 */
 	public JLabel getLblCuantityDescription() {
 		return lblCuantityDescription;
 	}
 
+	/**
+	 * Setter for lblCuantityDescription field 
+	 * @param lblCuantityDescription The new lblCuantityDescription
+	 */
 	public void setLblCuantityDescription(JLabel lblCuantityDescription) {
 		this.lblCuantityDescription = lblCuantityDescription;
 	}
 
+	/**
+	 * Getter for lblCuantityResult field
+	 * @return The lblCuantityResult
+	 */
 	public JLabel getLblCuantityResult() {
 		return lblCuantityResult;
 	}
 
+	/**
+	 * Setter for lblCuantityResult field
+	 * @param lblCuantityResult The new lblCuantityResult
+	 */
 	public void setLblCuantityResult(JLabel lblCuantityResult) {
 		this.lblCuantityResult = lblCuantityResult;
 	}
 
+	/**
+	 * Getter for principalContentPanel field
+	 * @return The principalContentPanel
+	 */
 	public JPanel getPrincipalContentPanel() {
 		return principalContentPanel;
 	}
 
+	/**
+	 * Setter for principalContentPanel field
+	 * @param principalContentPanel The new principalContentPanel
+	 */
 	public void setPrincipalContentPanel(JPanel principalContentPanel) {
 		this.principalContentPanel = principalContentPanel;
 	}
 
+	/**
+	 * Getter for lblConverterTitle field  
+	 * @return The lblConverterTitle
+	 */
 	public JLabel getLblConverterTitle() {
 		return lblConverterTitle;
 	}
 
+	/**
+	 * Setter for lblConverterTitle field
+	 * @param lblConverterTitle The new lblConverterTitle
+	 */
 	public void setLblConverterTitle(JLabel lblConverterTitle) {
 		this.lblConverterTitle = lblConverterTitle;
 	}
 
+	/**
+	 * Getter for contentConverterPanel field
+	 * @return The contentConverterPanel
+	 */
 	public JPanel getContentConverterPanel() {
 		return contentConverterPanel;
 	}

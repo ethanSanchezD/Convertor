@@ -7,14 +7,21 @@ import javax.naming.spi.DirStateFactory.Result;
 
 import controller.Controller;
 
+/**
+ * Class for weigth conversion logic
+ */
 public class WeightConverter {
 	
 	private Controller controller;
 	
-	public void setController(Controller controller) {
-		this.controller = controller;
-	}
 	
+	/**
+	 * Method that makes all the logic for weight conversion
+	 * @param quantityInput The quantity that user wants to convert
+	 * @param comboBoxFromString 'From' currency user option,  
+	 * @param comboBoxToString 'To' currency user option
+	 * @return The conversion result
+	 */
 	public BigDecimal convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
 		BigDecimal result = new BigDecimal(0);
 		
@@ -60,6 +67,14 @@ public class WeightConverter {
 		
 		
 		return result.setScale(3, RoundingMode.HALF_UP);
+	}
+	
+	/**
+	 * Setter for controller field
+	 * @param controller The new controller 
+	 */
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 
 }

@@ -5,16 +5,23 @@ import java.math.RoundingMode;
 
 import controller.Controller;
 
+/**
+ * Class for measure conversion logic
+ */
 public class MeasureConverter {
 	
 	private Controller controller;
 	
 	
-	public void setController(Controller controller) {
-		this.controller = controller;
-		
-	}
 	
+	
+	/**
+	 * Method that makes all the logic for measure conversion
+	 * @param quantityInput The quantity that user wants to convert
+	 * @param comboBoxFromString 'From' currency user option,  
+	 * @param comboBoxToString 'To' currency user option
+	 * @return The conversion result
+	 */
 	public BigDecimal convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
 		BigDecimal result = new BigDecimal(0);
 		
@@ -75,6 +82,15 @@ public class MeasureConverter {
 		}
 		
 		return result.setScale(3,RoundingMode.HALF_UP);
+		
+	}
+	
+	/**
+	 * Setter for controller field
+	 * @param controller The new controller 
+	 */
+	public void setController(Controller controller) {
+		this.controller = controller;
 		
 	}
 }

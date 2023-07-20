@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 
+/**
+ * Class for measure window, it is shown when the user click the 'Measure' menu, in the principal window
+ */
 public class MeasureWindow extends DefaultConverterWindow implements ActionListener{
 	
 	
@@ -44,11 +47,19 @@ public class MeasureWindow extends DefaultConverterWindow implements ActionListe
 		btnConvert.addActionListener(this);
 	}
 
+	/**
+	 * convert method, where the controller calls the measure conversion method 
+	 */
 	@Override
 	protected String convert(BigDecimal cuantityInput, String comboBoxFromString, String comboBoxToString) {
-		return controller.measureConverter(cuantityInput, comboBoxFromString, comboBoxToString).toString();
+		return controller.measureConversion(cuantityInput, comboBoxFromString, comboBoxToString).toString();
 	}
 
+	/**
+	 * The action performed when btnConvert button is clicked  
+	 * It changes textAreaLeftContent, lblCuantityDescription and lblCuantityResult depending of
+	 * 'From' and 'To' user options
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnConvert) {
@@ -115,6 +126,12 @@ public class MeasureWindow extends DefaultConverterWindow implements ActionListe
 		
 	}
 
+	/**
+	 * Write the formulas in the textAreaLeftContent depending of 'From' and 'To' user options
+	 * It uses a switch that returns the specific formula 
+	 * @param option The specific formula we want (example: 'm to km') 
+	 * @return The specific formula 
+	 */
 	private String writeFormulas(String option) {
 		String result = "\n \n";
 		switch (option) {
