@@ -30,7 +30,7 @@
     <a href="https://github.com/ethanSanchezD/Java-Converter"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ethanSanchezD/Java-Converter">View Demo</a>
+    <a href="#usage">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/tree/master">README-Template</a>
   </p>
@@ -66,7 +66,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Java Converter Screen Shot][product-screenshot]]("/icons/project-screenshot.png")
+
+![project-screenshot](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/93455b9a-59f8-441a-8631-118a4c2e2e54)
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -121,17 +124,24 @@ In case you need to install Maven, go to the oficial installation page
 
 2. Move to repository folder
 
-3. Compile Main class
+3. Build proyect
    ```sh
-   java Main.java
+   mvn package
    ```
 4. Run Main class
    ```sh
-   javac Main
+   java -cp target/JavaConverter-0.0.1-SNAPSHOT.jar controller.Main
    ```
-#### Via IDE (In this example: Eclipse)
+#### Via IDE (In this example: VS Code)
+2. Open the cloned folder in VS Code
+3. Run Main class
 
-2. Run Main class
+https://github.com/ethanSanchezD/Java-Converter/assets/129548925/99b7654b-6078-4b21-a176-71796ce3a49c
+
+
+   
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -143,18 +153,33 @@ In case you need to install Maven, go to the oficial installation page
 * Currency Converter
 
 
+![Currency-video_1](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/faa7c108-ec99-44b6-980b-ee324ccc6a44)
+
+
 
 
 * Temperature Converter
 
+![Temperature-video](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/85d50224-61f5-4774-af15-06c3efa90041)
 
 
 
 * Weight Converter
 
+![Weight-video](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/556d9c1f-8405-4137-a216-f3ff2dfc29d6)
 
 
 * Measure Converter
+
+
+![Measure-converter](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/da328faa-f6d9-4894-bd41-9c64e017ee47)
+
+
+
+
+* Error Managment
+  
+![error-managment](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8457a443-1ccd-40bf-839a-5ca09cdbe68e)
 
 
 
