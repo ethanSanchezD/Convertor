@@ -32,6 +32,11 @@
 			<location>C:/Users/ethan/OneDrive/Pictures/Saved Pictures/megumi-chibi.png</location>
 		</link>
 		<link>
+			<name>src/main/java/icons/project-screenshot.png</name>
+			<type>1</type>
+			<location>C:/Users/ethan/OneDrive/Pictures/Capturas de pantalla/project-screenshot.png</location>
+		</link>
+		<link>
 			<name>src/main/java/icons/sukuna-chibi.png</name>
 			<type>1</type>
 			<location>C:/Users/ethan/OneDrive/Pictures/Saved Pictures/sukuna-chibi.png</location>
