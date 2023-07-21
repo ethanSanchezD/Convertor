@@ -30,7 +30,7 @@
     <a href="https://github.com/ethanSanchezD/Java-Converter"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#example usage">View Demo</a>
+    <a href="#example-usage">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/tree/master">README-Template</a>
   </p>
