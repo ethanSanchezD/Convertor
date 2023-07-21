@@ -47,7 +47,7 @@ public class TemperatureWindow extends DefaultConverterWindow implements ActionL
 		lblLeftContentTitle.setText("Formula");
 		
 		textAreaLeftContent.setText("  ");
-		textAreaLeftContent.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+		textAreaLeftContent.setFont(PrincipalWindow.createFont(14));
 		textAreaLeftContent.setBounds(35, 137, 156, 83);
 		textAreaLeftContent.setBackground(new Color(9, 64, 103));
 		

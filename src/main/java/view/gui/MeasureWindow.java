@@ -32,7 +32,7 @@ public class MeasureWindow extends DefaultConverterWindow implements ActionListe
 		
 		lblLeftContentTitle.setForeground(new Color(5, 88, 88));
 		
-		textAreaLeftContent.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+		textAreaLeftContent.setFont(PrincipalWindow.createFont(14));
 		textAreaLeftContent.setBackground(new Color(5, 88, 88));
 		textAreaLeftContent.setBounds(35, 137, 156, 83);
 		

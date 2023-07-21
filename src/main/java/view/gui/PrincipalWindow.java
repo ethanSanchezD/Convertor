@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
+import java.io.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -31,6 +32,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -43,7 +45,7 @@ import java.awt.Cursor;
  */
 public class PrincipalWindow extends JFrame implements MouseListener {
 
-	private Font font;
+	private Font fontUnderlined;
 	private JPanel contentPane;
 	private Controller controller;
 	private JPanel principalPanel;
@@ -66,6 +68,7 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 	private TemperatureWindow temperatureWindow;
 	private WeightWindow weightWindow;
 	private MeasureWindow measureWindow;
+	private static InputStream inputStream;
 
 	/**
 	 * Constructor method that calls buildComponents()
@@ -79,6 +82,9 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 	 * It creates all the components for the window
 	 */
 	private void buildComponents() {
+		
+
+		
 
 		setTitle("Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,7 +112,7 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 		optionsPanel.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("    ");
-		lblNewLabel_1.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblNewLabel_1.setFont(createFont(12));
 		optionsPanel.add(lblNewLabel_1, BorderLayout.NORTH);
 
 		JLabel lblNewLabel_2 = new JLabel("    ");
@@ -125,7 +131,7 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 
 		lblHomeOption = new JLabel("Home");
 		lblHomeOption.setForeground(new Color(40, 50, 81));
-		lblHomeOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		lblHomeOption.setFont(createFont(13));
 		lblHomeOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblHomeOption);
 		lblHomeOption.addMouseListener(this);
@@ -133,28 +139,28 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 
 		lblCurrencyOption = new JLabel("Currency");
 		lblCurrencyOption.setForeground(new Color(40, 50, 81));
-		lblCurrencyOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		lblCurrencyOption.setFont(createFont(13));
 		lblCurrencyOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblCurrencyOption);
 		lblCurrencyOption.addMouseListener(this);
 
 		lblTemperatureOption = new JLabel("Temperature");
 		lblTemperatureOption.setForeground(new Color(40, 50, 81));
-		lblTemperatureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		lblTemperatureOption.setFont(createFont(13));
 		lblTemperatureOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblTemperatureOption);
 		lblTemperatureOption.addMouseListener(this);
 
 		lblWeightOption = new JLabel("Weight");
 		lblWeightOption.setForeground(new Color(40, 50, 81));
-		lblWeightOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		lblWeightOption.setFont(createFont(13));
 		lblWeightOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblWeightOption);
 		lblWeightOption.addMouseListener(this);
 
 		lblMeasureOption = new JLabel("Measure");
 		lblMeasureOption.setForeground(new Color(40, 50, 81));
-		lblMeasureOption.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		lblMeasureOption.setFont(createFont(13));
 		lblMeasureOption.setHorizontalAlignment(SwingConstants.CENTER);
 		convertersPanel.add(lblMeasureOption);
 		lblMeasureOption.addMouseListener(this);
@@ -184,7 +190,7 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 
 		JLabel lblNewLabel_6 = new JLabel("Created by Ethan Sanchez");
 		lblNewLabel_6.setForeground(new Color(35, 41, 70));
-		lblNewLabel_6.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblNewLabel_6.setFont(createFont(13));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		southPanel.add(lblNewLabel_6, BorderLayout.CENTER);
 
@@ -210,9 +216,23 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 		lblNewLabel_8.setForeground(new Color(255, 255, 254));
 		lblNewLabel_8.setBounds(250, 346, 301, 26);
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_8.setFont(new Font("Roboto Condensed", Font.BOLD, 22));
+		lblNewLabel_8.setFont(createFont(22));
 		contenCenterPanel.add(lblNewLabel_8);
 
+	}
+	
+	public static Font createFont(float fontsize) {
+		Font robotoCondesedBoldFont = null;
+		try {
+			inputStream = new BufferedInputStream(new FileInputStream("src/main/resources/fonts/RobotoCondensed-Bold.ttf")); 
+				
+			robotoCondesedBoldFont = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(fontsize);
+			
+		} catch (IOException |FontFormatException e ) {
+			e.printStackTrace();
+			
+		}
+		return robotoCondesedBoldFont;
 	}
 
 	/**
@@ -223,15 +243,15 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 	 *                      want it underlined
 	 */
 	private void setUnderline(JLabel labelAsButton, Boolean underlineOnOf) {
-		font = labelAsButton.getFont();
-		Map attribute = font.getAttributes();
+		fontUnderlined = labelAsButton.getFont();
+		Map attribute = fontUnderlined.getAttributes();
 		if (underlineOnOf) {
 			attribute.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 		} else {
 			attribute.put(TextAttribute.UNDERLINE, -1);
 		}
 
-		labelAsButton.setFont(font.deriveFont(attribute));
+		labelAsButton.setFont(fontUnderlined.deriveFont(attribute));
 	}
 
 	/**

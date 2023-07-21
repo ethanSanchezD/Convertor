@@ -34,7 +34,7 @@ public class WeightWindow extends DefaultConverterWindow implements ActionListen
 		
 		lblLeftContentTitle.setForeground(new Color(56, 28, 104));
 		
-		textAreaLeftContent.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+		textAreaLeftContent.setFont(PrincipalWindow.createFont(14));
 		textAreaLeftContent.setBackground(new Color(56, 28, 104));
 		textAreaLeftContent.setBounds(35, 137, 156, 83);
 		
