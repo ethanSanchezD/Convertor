@@ -119,7 +119,7 @@ In case you need to install Maven, go to the oficial installation page
     ```sh
    mvn clean package
    ```
-5. Run Main class
+5. Run Maven project
    ```sh
    java -jar target/JavaConverter-0.0.1-SNAPSHOT.jar
    ```
