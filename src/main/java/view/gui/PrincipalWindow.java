@@ -169,7 +169,7 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 		lblLogo.setBounds(31, 8, 19, 27);
 		panelLogo.add(lblLogo);
 		lblLogo.setOpaque(false);
-		lblLogo.setIcon(new ImagePanel().paintComponent(lblLogo, "/icons/Vector.png"));
+		lblLogo.setIcon(new ImagePanel().paintComponent(lblLogo, "/Vector.png"));
 
 		southPanel = new JPanel();
 		southPanel.setBackground(new Color(184, 193, 236));
@@ -204,7 +204,7 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 		lblImage_1.setHorizontalAlignment(SwingConstants.CENTER);
 		contenCenterPanel.add(lblImage_1);
 		// setImageLabel(lblImage_1,"/icons/sukuna-chibi.png");
-		lblImage_1.setIcon(new ImagePanel().paintComponent(lblImage_1, "/icons/megumi-chibi.png"));
+		lblImage_1.setIcon(new ImagePanel().paintComponent(lblImage_1, "/megumi-chibi.png"));
 
 		lblNewLabel_8 = new JLabel("No converter option selected");
 		lblNewLabel_8.setForeground(new Color(255, 255, 254));
