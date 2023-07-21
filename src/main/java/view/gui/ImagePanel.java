@@ -17,9 +17,16 @@ public class ImagePanel {
 	 * @return The Image icon with the defined scale
 	 */
 	public Icon paintComponent(JLabel label, String pathImage) {
-		Icon image = new ImageIcon(new ImageIcon(getClass().getResource(pathImage))
-				.getImage().getScaledInstance(label.getWidth(), label.getHeight(),
-						Image.SCALE_DEFAULT));
+		Icon image = null;
+		try {
+
+			image = new ImageIcon(new ImageIcon(getClass().getResource(pathImage))
+					.getImage().getScaledInstance(label.getWidth(), label.getHeight(),
+							Image.SCALE_DEFAULT));
+
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 
 		return image;
 
