@@ -220,7 +220,8 @@ Project Link: [https://github.com/ethanSanchezD/Java-Converter](https://github.c
 ## Acknowledgments
 
 * Thanks to [Alura-Latam](https://www.aluracursos.com/?gclid=CjwKCAjwtuOlBhBREiwA7agf1rdySFIHX-ybAQ678Q779VPf4w5GhYMG21A5x9yPvKdORnMzIWK3DBoC6UAQAvD_BwE)
-  and [Oracle](https://www.oracle.com/mx/) for give me the oportunity of being part of [Oracle Next Education](https://www.oracle.com/mx/education/oracle-next-education/) and make this project posible. 
+  and [Oracle](https://www.oracle.com/mx/) for give me the oportunity of being part of [Oracle Next Education](https://www.oracle.com/mx/education/oracle-next-education/) and make this project posible.
+* [API used in Currency Converter](https://exchangerate.host/#/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
