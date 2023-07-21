@@ -66,8 +66,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+This Java Converter was build using the MVC pattern desing, where Model was the converters logic, the View was the gui windows, and the Controller was a Conttroller class that connects Views user inputs to the Models classes.
 
-![project-screenshot](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/93455b9a-59f8-441a-8631-118a4c2e2e54)
+
+ <img width="184" alt="Screenshot 2023-07-21 143710" src="https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8c48f07c-7c72-40fb-a45b-8c9f1b58aca4">   ![project-screenshot](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/93455b9a-59f8-441a-8631-118a4c2e2e54)
+
 
 
 
