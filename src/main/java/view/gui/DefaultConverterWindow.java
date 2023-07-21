@@ -77,12 +77,12 @@ public abstract class DefaultConverterWindow extends JPanel{
 		lblLeftContentTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLeftContentTitle.setBounds(43, 46, 131, 36);
 		leftContentPanel.add(lblLeftContentTitle);
-		lblLeftContentTitle.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
+		lblLeftContentTitle.setFont(PrincipalWindow.createFont(30));
 		
 		textAreaLeftContent = new JTextArea();
 		textAreaLeftContent.setColumns(1);
 		textAreaLeftContent.setForeground(new Color(255, 255, 255));
-		textAreaLeftContent.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		textAreaLeftContent.setFont(PrincipalWindow.createFont(13));
 		textAreaLeftContent.setBackground(new Color(35, 41, 70));
 		textAreaLeftContent.setBounds(35, 90, 154, 239);
 		leftContentPanel.add(textAreaLeftContent);
@@ -100,7 +100,7 @@ public abstract class DefaultConverterWindow extends JPanel{
 		
 		lblConverterTitle = new JLabel("Title");
 		lblConverterTitle.setForeground(new Color(255, 255, 254));
-		lblConverterTitle.setFont(new Font("Roboto Condensed", Font.BOLD, 30));
+		lblConverterTitle.setFont(PrincipalWindow.createFont(30));
 		lblConverterTitle.setBounds(182, 46, 236, 36);
 		principalContentPanel.add(lblConverterTitle);
 		
@@ -121,49 +121,49 @@ public abstract class DefaultConverterWindow extends JPanel{
 		
 		lblCuantity = new JLabel("Cuantity:");
 		lblCuantity.setForeground(new Color(255, 255, 254));
-		lblCuantity.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblCuantity.setFont(PrincipalWindow.createFont(18));
 		lblCuantity.setBounds(93, 110, 83, 20);
 		principalContentPanel.add(lblCuantity);
 		
 		lblFrom = new JLabel("From:");
 		lblFrom.setForeground(new Color(255, 255, 254));
-		lblFrom.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblFrom.setFont(PrincipalWindow.createFont(18));
 		lblFrom.setBounds(93, 172, 83, 20);
 		principalContentPanel.add(lblFrom);
 		
 		comboBoxFrom = new JComboBox<>(optionStrings);
-		comboBoxFrom.setFont(new Font("Roboto Condensed", Font.PLAIN, 12));
+		comboBoxFrom.setFont(PrincipalWindow.createFont(12));
 		comboBoxFrom.setBounds(93, 203, 129, 22);
 		principalContentPanel.add(comboBoxFrom);
 		
 		lblTo = new JLabel("To:");
 		lblTo.setForeground(new Color(255, 255, 254));
-		lblTo.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblTo.setFont(PrincipalWindow.createFont(18));
 		lblTo.setBounds(256, 172, 83, 20);
 		
 		principalContentPanel.add(lblTo);
 		
 		comboBoxTo = new JComboBox<>(optionStrings);
-		comboBoxTo.setFont(new Font("Roboto Condensed", Font.PLAIN, 12));
+		comboBoxTo.setFont(PrincipalWindow.createFont(12));
 		comboBoxTo.setBounds(256, 203, 129, 22);
 		principalContentPanel.add(comboBoxTo);
 		
 		btnConvert = new JButton("Convert");
 		btnConvert.setForeground(new Color(35, 41, 70));
 		btnConvert.setBackground(new Color(255, 255, 254));
-		btnConvert.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+		btnConvert.setFont(PrincipalWindow.createFont(14));
 		btnConvert.setBounds(414, 322, 89, 23);
 		principalContentPanel.add(btnConvert);
 		
 		lblCuantityDescription = new JLabel("  ");
 		lblCuantityDescription.setForeground(new Color(192, 192, 192));
-		lblCuantityDescription.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblCuantityDescription.setFont(PrincipalWindow.createFont(12));
 		lblCuantityDescription.setBounds(93, 266, 292, 19);
 		principalContentPanel.add(lblCuantityDescription);
 		
 		lblCuantityResult = new JLabel("  ");
 		lblCuantityResult.setForeground(new Color(255, 255, 254));
-		lblCuantityResult.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblCuantityResult.setFont(PrincipalWindow.createFont(18));
 		lblCuantityResult.setBounds(93, 282, 292, 43);
 		principalContentPanel.add(lblCuantityResult);
 	}

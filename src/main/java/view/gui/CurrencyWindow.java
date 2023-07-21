@@ -61,7 +61,7 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 		JTextArea textAreaCurrencyWindowArea = new JTextArea();
 		textAreaCurrencyWindowArea.setColumns(1);
 		textAreaCurrencyWindowArea.setForeground(new Color(255, 255, 255));
-		textAreaCurrencyWindowArea.setFont(new Font("Roboto Condensed", Font.BOLD, 13));
+		textAreaCurrencyWindowArea.setFont(PrincipalWindow.createFont(13));
 		textAreaCurrencyWindowArea.setBackground(new Color(35, 41, 70));
 		textAreaCurrencyWindowArea.setBounds(35, 90, 154, 239);
 		leftContentPanel.remove(textAreaLeftContent);
@@ -101,11 +101,11 @@ public class CurrencyWindow extends DefaultConverterWindow implements ActionList
 		btnConvert.addActionListener(this);
 		
 		lblCuantityDescription.setForeground(new Color(192, 192, 192));
-		lblCuantityDescription.setFont(new Font("Roboto Condensed", Font.BOLD, 12));
+		lblCuantityDescription.setFont(PrincipalWindow.createFont(12));
 		
 		
 		lblCuantityResult.setForeground(new Color(255, 255, 254));
-		lblCuantityResult.setFont(new Font("Roboto Condensed", Font.BOLD, 18));
+		lblCuantityResult.setFont(PrincipalWindow.createFont(18));
 		
 	
 
