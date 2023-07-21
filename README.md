@@ -22,7 +22,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-<h3 align="center">Java Converter</h3>
+<h1 align="center">Java Converter</h1>
 
   <p align="center">
     The Java Converter is a versatile and user-friendly desktop application designed to perform various unit conversions effortlessly. This project aims to develop a robust, efficient, and intuitive tool that allows users to convert between different measurement units seamlessly.
@@ -30,7 +30,7 @@
     <a href="https://github.com/ethanSanchezD/Java-Converter"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#usage">View Demo</a>
+    <a href="#example usage">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/tree/master">README-Template</a>
   </p>
@@ -91,19 +91,6 @@
 
 ### Prerequisites
 
-#### Proyect Font  
-In this project, Roboto Condensed font is used, so it is important to have this font installed.
-
-Any font instalattion tutorial:
-
-* [For Windows 11](https://www.youtube.com/watch?v=DWzP-VFJRY4)
-
-* [For Windows 10](https://www.youtube.com/watch?v=wQK0lDnfjjI)
-
-* [For Mac](https://www.youtube.com/watch?v=A6Gu4UQOAUA)
-
-* [For Linux (Ubuntu)](https://www.youtube.com/watch?v=hASO2KXOqME)
-
 #### Maven 
 To run this proyect, it is necessary to have Apache Maven at least 3.8.8 version installed, but it is strongly recommended to use the latest release version.
 In case you need to install Maven, go to the oficial installation page
@@ -128,12 +115,16 @@ In case you need to install Maven, go to the oficial installation page
    ```sh
    mvn package
    ```
-4. Run Main class
+   or
+    ```sh
+   mvn clean package
+   ```
+5. Run Main class
    ```sh
-   java -cp target/JavaConverter-0.0.1-SNAPSHOT.jar controller.Main
+   java -jar target/JavaConverter-0.0.1-SNAPSHOT.jar
    ```
 #### Via IDE (In this example: VS Code)
-2. Open the cloned folder in VS Code
+2. Open the cloned folder in the IDE
 3. Run Main class
 
 
@@ -151,7 +142,7 @@ https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8663b14a-b599-4
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Example Usage
 
 * Currency Converter
 
@@ -206,7 +197,8 @@ Project Link: [https://github.com/ethanSanchezD/Java-Converter](https://github.c
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Alura-Latam](https://www.aluracursos.com/?gclid=CjwKCAjwtuOlBhBREiwA7agf1rdySFIHX-ybAQ678Q779VPf4w5GhYMG21A5x9yPvKdORnMzIWK3DBoC6UAQAvD_BwE)
+* Thanks to [Alura-Latam](https://www.aluracursos.com/?gclid=CjwKCAjwtuOlBhBREiwA7agf1rdySFIHX-ybAQ678Q779VPf4w5GhYMG21A5x9yPvKdORnMzIWK3DBoC6UAQAvD_BwE)
+  and [Oracle](https://www.oracle.com/mx/) for give me the oportunity of being part of [Oracle Next Education](https://www.oracle.com/mx/education/oracle-next-education/) and make this project posible. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
