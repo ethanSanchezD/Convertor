@@ -4,8 +4,14 @@
   <artifactId>JavaConverter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>JavaConvertor</name>
+
+  <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
   
-  <dependencies>
+<dependencies>
+	
+
 	  <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
 	<dependency>
 	    <groupId>com.squareup.okhttp3</groupId>
@@ -21,4 +27,16 @@
 	</dependency>
 	  
   </dependencies>
+
+  <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
