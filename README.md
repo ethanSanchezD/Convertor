@@ -25,12 +25,12 @@
 <h1 align="center">Java Converter</h1>
 
   <p align="center">
-    The Java Converter is a versatile and user-friendly desktop application designed to perform various unit conversions effortlessly. This project aims to develop a robust, efficient, and intuitive tool that allows users to convert between different measurement units seamlessly.
+    The Java Converter is a versatile and user-friendly desktop application designed to perform various unit conversions effortlessly. This project aims to develop a robust, efficient, and intuitive tool that allows users to convert between different currency measurement units seamlessly.
     <br />
     <a href="https://github.com/ethanSanchezD/Java-Converter"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#example-usage">View Demo</a>
+    <a href="#usage-examples">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/tree/master">README-Template</a>
   </p>
@@ -55,7 +55,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#example-usage">Example Usage</a></li>
+    <li><a href="#usage-examples">Usage Examples</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -91,9 +91,11 @@
 
 ### Prerequisites
 
+* To use currency converter, internet conection is necesary.
+
 #### Maven 
 To run this proyect, it is necessary to have Apache Maven at least 3.8.8 version installed, but it is strongly recommended to use the latest release version.
-In case you need to install Maven, go to the oficial installation page
+In case you need to install Maven, go to the oficial installation page.
 
 * [Download Apache Maven](https://maven.apache.org/download.cgi)
 * [Install Apache Maven](https://maven.apache.org/install.html)
@@ -141,10 +143,19 @@ https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8663b14a-b599-4
 
 
 
+
 <!-- USAGE EXAMPLES -->
-## Example Usage
+## Usage Examples
+
+This project uses a limited currency and measurement units:
 
 * Currency Converter
+  * Mexican Peso
+  * US Dollar
+  * Euro
+  * British Pound
+  * Japanese Yen
+  * South Korean Won   
 
 
 ![Currency-video_1](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/faa7c108-ec99-44b6-980b-ee324ccc6a44)
@@ -153,17 +164,27 @@ https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8663b14a-b599-4
 
 
 * Temperature Converter
+  * Celsius
+  * Fharenheit
+  * Kelvins   
 
 ![Temperature-video](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/85d50224-61f5-4774-af15-06c3efa90041)
 
 
 
 * Weight Converter
+  * Kilograms
+  * Grams
+  * Pounds 
 
 ![Weight-video](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/556d9c1f-8405-4137-a216-f3ff2dfc29d6)
 
 
 * Measure Converter
+  * Meter
+  * Kilometer
+  * Mile
+  * Foot
 
 
 ![Measure-converter](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/da328faa-f6d9-4894-bd41-9c64e017ee47)
@@ -172,6 +193,7 @@ https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8663b14a-b599-4
 
 
 * Error Managment
+  * Different type of wrong inputs was handled as input errors
   
 ![error-managment](https://github.com/ethanSanchezD/Java-Converter/assets/129548925/8457a443-1ccd-40bf-839a-5ca09cdbe68e)
 
