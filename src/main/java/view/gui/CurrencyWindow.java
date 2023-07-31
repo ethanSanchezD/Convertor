@@ -1,38 +1,22 @@
 package view.gui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
 import java.awt.Color;
-import java.awt.CardLayout;
-import java.awt.GridLayout;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
 
 import controller.Controller;
 
-import java.awt.FlowLayout;
-import javax.swing.JToggleButton;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
 import javax.swing.JTextArea;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * Class for currency window, it is shown when the user click the 'Currency' menu, in the principal window
  */
 public class CurrencyWindow extends DefaultConverterWindow implements ActionListener{;
+	
+	private static final long serialVersionUID = 1L;
 	
 	String[] currencyOptionsKeys = {"", "Mexican Peso","US Dollar", "Euro","British Pound", "Japanese Yen", "South Korean Won"};
 	private HashMap<String,String> hashMapOptions;

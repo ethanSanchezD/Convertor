@@ -1,7 +1,5 @@
 package controller;
 
-import java.math.BigDecimal;
-
 import model.CurrencyConverter;
 import model.MeasureConverter;
 import model.TemperatureConverter;

@@ -1,11 +1,12 @@
 package view.gui;
 
 import javax.swing.JPanel;
+
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.Font;
+
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
@@ -24,6 +25,9 @@ import java.awt.event.KeyEvent;
  * Father class for all windows, it has all the components that all windows has in commune   
  */
 public abstract class DefaultConverterWindow extends JPanel{
+	
+
+	private static final long serialVersionUID = 1L;
 	
 	protected final JPanel contentConverterPanel = new JPanel();
 	protected Controller controller;

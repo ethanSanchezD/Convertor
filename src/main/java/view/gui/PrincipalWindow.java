@@ -1,6 +1,5 @@
 package view.gui;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,31 +9,18 @@ import controller.Controller;
 
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
-import java.awt.geom.AffineTransform;
 import java.io.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import java.util.function.Function;
-
 import javax.swing.SwingConstants;
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 
 /**
@@ -45,6 +31,9 @@ import java.awt.Cursor;
  */
 public class PrincipalWindow extends JFrame implements MouseListener {
 
+
+	private static final long serialVersionUID = 1L;
+	
 	private Font fontUnderlined;
 	private JPanel contentPane;
 	private Controller controller;
@@ -62,7 +51,6 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 	private JLabel lblImage_1;
 	private JLabel lblNewLabel_8;
 	private JLabel lblHomeOption;
-	private JLabel lblNewLabel;
 	private JLabel lblLogo;
 	private CurrencyWindow currencyWindow;
 	private TemperatureWindow temperatureWindow;
@@ -221,6 +209,11 @@ public class PrincipalWindow extends JFrame implements MouseListener {
 
 	}
 	
+	/**
+	 * Creates the font that it is used in all the project.
+	 * @param fontsize The font size  
+	 * @return The Roboto Condesed Bold font 
+	 */
 	public static Font createFont(float fontsize) {
 		Font robotoCondesedBoldFont = null;
 		try {

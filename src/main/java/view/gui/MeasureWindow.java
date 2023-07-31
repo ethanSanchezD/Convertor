@@ -1,20 +1,22 @@
 package view.gui;
 
 import java.awt.Color;
-import java.awt.Font;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.SwingConstants;
+
 
 /**
  * Class for measure window, it is shown when the user click the 'Measure' menu, in the principal window
  */
 public class MeasureWindow extends DefaultConverterWindow implements ActionListener{
 	
-	
+	private static final long serialVersionUID = 1L;
+
 	public MeasureWindow() {
 		super();
 		
