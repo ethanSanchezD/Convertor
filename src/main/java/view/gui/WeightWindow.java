@@ -2,18 +2,20 @@ package view.gui;
 
 import java.math.BigDecimal;
 
+
 import javax.swing.DefaultComboBoxModel;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 
 /**
  * Class for weight window, it is shown when the user click the 'Weight' menu, in the principal window
  */
 public class WeightWindow extends DefaultConverterWindow implements ActionListener{
 	
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Constructor that builds all the window components
 	 */

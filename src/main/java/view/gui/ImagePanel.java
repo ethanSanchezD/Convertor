@@ -1,8 +1,8 @@
 package view.gui;
 
 import javax.swing.*;
+
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 /**
  * Class for put images in a window using a label

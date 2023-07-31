@@ -1,9 +1,8 @@
 package model;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
+import java.math.RoundingMode;
 
 import controller.Controller;
 

@@ -1,32 +1,14 @@
 package view.gui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-import java.awt.Font;
 import java.awt.Color;
-import java.awt.CardLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
 
-import controller.Controller;
 
-import java.awt.FlowLayout;
-import javax.swing.JToggleButton;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 
 /**
  * Class for temperature window, it is shown when the user click the 'Temperature' menu, in the principal window
@@ -34,6 +16,9 @@ import java.awt.event.KeyListener;
 public class TemperatureWindow extends DefaultConverterWindow implements ActionListener{ 
 
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Constructor that builds all the window components
 	 */
